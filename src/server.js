@@ -8,10 +8,10 @@ import config from './config';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import {preauth} from './redux/modules/auth';
-// import httpProxy from 'http-proxy';
+import httpProxy from 'http-proxy';
 import path from 'path';
 import createStore from './redux/create';
-// import ApiClient from './helpers/ApiClient';
+import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
 import PrettyError from 'pretty-error';
 import http from 'http';
@@ -28,10 +28,10 @@ import getStatusFromRoutes from './helpers/getStatusFromRoutes';
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
-// const proxy = httpProxy.createProxyServer({
-//   target: 'http://' + config.apiHost + ':' + config.apiPort,
-//   ws: true
-// });
+// removed ws: true from proxy
+const proxy = httpProxy.createProxyServer({
+  target: 'http://' + config.apiHost + ':' + config.apiPort
+});
 
 app.use(compression());
 app.use(cookieParser());
@@ -40,23 +40,23 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 
 // Proxy to API server
-// app.use('/api', (req, res) => {
-//   proxy.web(req, res);
-// });
+app.use('/api', (req, res) => {
+  proxy.web(req, res);
+});
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
-// proxy.on('error', (error, req, res) => {
-//   let json;
-//   if (error.code !== 'ECONNRESET') {
-//     console.error('proxy error', error);
-//   }
-//   if (!res.headersSent) {
-//     res.writeHead(500, {'content-type': 'application/json'});
-//   }
-//
-//   json = {error: 'proxy_error', reason: error.message};
-//   res.end(JSON.stringify(json));
-// });
+proxy.on('error', (error, req, res) => {
+  let json;
+  if (error.code !== 'ECONNRESET') {
+    console.error('proxy error', error);
+  }
+  if (!res.headersSent) {
+    res.writeHead(500, {'content-type': 'application/json'});
+  }
+
+  json = {error: 'proxy_error', reason: error.message};
+  res.end(JSON.stringify(json));
+});
 
 app.use((req, res) => {
   if (__DEVELOPMENT__) {
@@ -65,12 +65,14 @@ app.use((req, res) => {
     webpackIsomorphicTools.refresh();
   }
 
-  const store = createStore(reduxReactRouter, getRoutes, createHistory);
+  const client = new ApiClient(req);
+
+  const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
 
   // TODO, check session token against database, get user data, dispatch action
-  if(req.cookies.userId) {
-    store.dispatch(preauth(req.cookies.userId));
-  }
+  // if(req.cookies.userId) {
+  //   store.dispatch(preauth(req.cookies.userId));
+  // }
 
   function hydrateOnClient() {
 

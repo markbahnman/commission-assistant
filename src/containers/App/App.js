@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 // import { Navbar, NavBrand, Nav, NavItem, CollapsibleNav } from 'react-bootstrap';
 import DocumentMeta from 'react-document-meta';
 // import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-// import { isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth';
+import { isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth';
 // import { InfoBar } from 'components';
 import { pushState } from 'redux-router';
 import connectData from 'helpers/connectData';
@@ -17,10 +17,9 @@ function fetchData(getState, dispatch) {
   // if (!isInfoLoaded(getState())) {
   //   promises.push(dispatch(loadInfo()));
   // }
-  // if (!isAuthLoaded(getState())) {
-  //   promises.push(dispatch(loadAuth()));
-  // }
-  console.log(!!dispatch);
+  if (!isAuthLoaded(getState())) {
+    promises.push(dispatch(loadAuth()));
+  }
   return Promise.all(promises);
 }
 
