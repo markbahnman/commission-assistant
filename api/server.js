@@ -3,7 +3,7 @@ import config from '../src/config';
 import models from './models';
 
 models.sequelize.sync().then(() => {
-  const server = api.listen(config.apiPort, (err) => {
+  api.listen(config.apiPort, (err) => {
     if (err) {
       console.error(err);
     }
@@ -11,6 +11,6 @@ models.sequelize.sync().then(() => {
     console.info('==> 💻  Send requests to http://%s:%s', config.apiHost, config.apiPort);
   });
 }).catch((error) => {
-  console.error('Error syncing models',error);
+  console.error('Error syncing models', error);
 });
 

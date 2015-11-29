@@ -4,12 +4,12 @@ export default function health() {
   return new Promise((resolve, reject) => {
     models.User
     .count()
-    .then((count) => {
+    .then(() => {
       resolve({healthy: true});
     })
     .catch((error) => {
-      console.error("Error in database health check", error);
-      reject({healthy:false, error: error});
+      console.error('Error in database health check', error);
+      reject({healthy: false, error: error});
     });
   });
-};
+}
