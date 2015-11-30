@@ -24,7 +24,7 @@
       "env": {
         "NODE_ENV": "testing",
         "NODE_PATH": "./api",
-        "APIPORT": 3000
+        "APIPORT":8081
       }
     },
     "start-prod": {
@@ -33,7 +33,7 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
         "PORT": 8080,
-        "APIPORT": 3000
+        "APIPORT": 8081
       }
     },
     "start-prod-api": {
@@ -42,7 +42,7 @@
         "NODE_PATH": "./api",
         "NODE_ENV": "production",
         "POSTGRES": "postgres://mark:bahnman@localhost/commission-assistant",
-        "APIPORT": 3000
+        "APIPORT": 8081
       }
     },
     "start-dev": {
@@ -51,7 +51,7 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
         "PORT": 3000,
-        "APIPORT": 3030
+        "APIPORT": 8081
       }
     },
     "start-dev-api": {
@@ -60,7 +60,7 @@
         "NODE_PATH": "./api",
         "NODE_ENV": "development",
         "POSTGRES": "postgres://mark:bahnman@localhost/commission-assistant",
-        "APIPORT": 3030
+        "APIPORT": 8081
       }
     },
     "watch-client": {
