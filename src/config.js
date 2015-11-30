@@ -14,9 +14,9 @@ const environment = {
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT,
+  port: process.env.PORT || 8080,
   apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT,
+  apiPort: process.env.APIPORT || process.env.PORT || 8081,
   app: {
     title: 'Commission Assistant',
     description: 'Modern Tool for Modern Artists',
