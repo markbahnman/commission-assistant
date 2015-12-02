@@ -96,5 +96,8 @@ module.exports = {
       __DEVELOPMENT__: true
     }),
     webpackIsomorphicToolsPlugin.development()
-  ]
+  ],
+  externals: {
+    newrelic: true
+  }
 };

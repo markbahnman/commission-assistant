@@ -85,5 +85,8 @@ module.exports = {
     }),
 
     webpackIsomorphicToolsPlugin
-  ]
+  ],
+  externals: {
+    newrelic: true
+  }
 };
