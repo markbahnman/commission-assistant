@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+if (process.env.NODE_ENV === 'production') {
+  require('newrelic');
+}
+
 if (process.env.NODE_ENV !== 'production') {
   if (!require('piping')({
     hook: true,
