@@ -9,6 +9,7 @@
     "start-prod-api": "better-npm-run start-prod-api",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
     "postinstall": "webpack --display-error-details --config webpack/prod.config.js",
+    "ebs": "better-npm-run ebs",
     "lint": "eslint -c .eslintrc src api",
     "lint-watch": "esw -c .eslintrc src api --watch",
     "start-dev": "better-npm-run start-dev",
@@ -32,6 +33,16 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production"
+      }
+    },
+    "ebs": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "PORT": 3000,
+        "APIHOST": "commissionassistant-api.elasticbeanstalk.com",
+        "APIPORT": 80
       }
     },
     "start-prod-api": {
