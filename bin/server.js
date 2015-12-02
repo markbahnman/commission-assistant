@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 if (process.env.NODE_ENV === 'production') {
-  require('newrelic');
+  var newrelic = require('newrelic');
 }
 require('../server.babel'); // babel registration (runtime transpilation for node)
 var path = require('path');
