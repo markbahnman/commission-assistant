@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Commission Assistant'],
+  app_name: ['Commission Assistant ' + process.env.TYPE || 'default'],
   /**
    * Your New Relic license key.
    */

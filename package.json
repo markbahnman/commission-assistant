@@ -40,6 +40,7 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
+        "TYPE": "WEB",
         "APIHOST": "commissionassistant-api.elasticbeanstalk.com",
         "APIPORT": 80
       }
@@ -48,6 +49,7 @@
       "command": "node ./bin/api.js",
       "env": {
         "NODE_PATH": "./api",
+        "TYPE": "API",
         "NODE_ENV": "production"
       }
     },
