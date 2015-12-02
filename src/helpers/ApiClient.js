@@ -5,20 +5,25 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
+  let formatedPath = '';
+
   if (process.env.NODE_ENV !== 'production') {
     if (__SERVER__) {
       // Prepend host and port of the API server to the path.
-      return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
+      formatedPath = 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
+    } else {
+      // Prepend `/api` to relative URL, to proxy to API server.
+      formatedPath = '/api' + adjustedPath;
     }
-    // Prepend `/api` to relative URL, to proxy to API server.
-    return '/api' + adjustedPath;
   } else {
-    if(__SERVER__) {
-      return 'http://commissionassistant-api.elasticbeanstalk.com' + adjustedPath;
+    if (__SERVER__) {
+      formatedPath = 'http://commissionassistant-api.elasticbeanstalk.com' + adjustedPath;
+    } else {
+      formatedPath = adjustedPath;
     }
-
-    return adjustedPath;
   }
+
+  return formatedPath;
 }
 
 /*
