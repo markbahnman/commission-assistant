@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-// import cookie from 'react-cookie';
 import * as authActions from 'redux/modules/auth';
 
 @connect(state => ({ user: state.auth.user }),
@@ -15,7 +14,6 @@ export default class Login extends Component {
     event.preventDefault();
     const input = this.refs.username;
     this.props.login(input.value);
-    // cookie.save('userId', input.value);
     input.value = '';
   }
 
