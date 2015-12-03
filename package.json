@@ -50,7 +50,7 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
         "TYPE": "WEB",
-        "APIHOST": "commissionassistant-api.elasticbeanstalk.com",
+        "APIHOST": "commissionassistantapi.elasticbeanstalk.com",
         "APIPORT": 80
       }
     },
