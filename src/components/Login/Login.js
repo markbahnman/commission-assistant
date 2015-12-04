@@ -2,11 +2,11 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as authActions from 'redux/modules/auth';
 
-@connect(state => ({ user: state.auth.user }),
+@connect(state => ({ auth: state.auth }),
            authActions)
 export default class Login extends Component {
   static propTypes = {
-    user: PropTypes.object,
+    auth: PropTypes.object,
     login: PropTypes.func
   }
 
@@ -20,9 +20,14 @@ export default class Login extends Component {
   }
 
   render() {
-    const {user} = this.props;
+    const {auth} = this.props;
+    const {user, loggingIn, loaded, loginError } = auth;
     return (
       <div>
+        <div className="loginError">
+        {loggingIn && !loaded && 'Loading' }
+        {!loggingIn && !loaded && loginError && <p>{loginError.error}</p>}
+        </div>
         {!user &&
         <form onSubmit={this.handleSubmit}>
           <input type="text" ref="username" placeholder="username"/>
