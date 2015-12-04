@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function NotFound() {
+  console.log('Hitting not found route');
   return (
     <div className="container">
       <h1>Doh! 404!</h1>

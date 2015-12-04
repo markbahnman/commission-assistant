@@ -2,6 +2,9 @@ const PREAUTH = 'commission-assistant/auth/PREAUTH';
 const LOAD = 'redux-example/auth/LOAD';
 const LOAD_SUCCESS = 'redux-example/auth/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/auth/LOAD_FAIL';
+const SIGNUP = 'commission-assistant/auth/SIGNUP';
+const SIGNUP_SUCCESS = 'redux-example/auth/SIGNUP_SUCCESS';
+const SIGNUP_FAIL = 'redux-example/auth/SIGNUP_FAIL';
 const LOGIN = 'commission-assistant/auth/LOGIN';
 const LOGIN_SUCCESS = 'redux-example/auth/LOGIN_SUCCESS';
 const LOGIN_FAIL = 'redux-example/auth/LOGIN_FAIL';
@@ -34,18 +37,39 @@ export default function reducer(state = initialState, action) {
         loaded: false,
         error: action.error
       };
+    case SIGNUP:
+      return {
+        ...state,
+        signingUp: true
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signingUp: false,
+        user: action.result
+      };
+    case SIGNUP_FAIL:
+      return {
+        ...state,
+        signingUp: false,
+        user: null,
+        signupError: action.error
+      };
     case LOGIN:
+      console.log('LOGIN action');
       return {
         ...state,
         loggingIn: true
       };
     case LOGIN_SUCCESS:
+      console.log('LOGIN_SUCCESS action', action.result);
       return {
         ...state,
         loggingIn: false,
         user: action.result
       };
     case LOGIN_FAIL:
+      console.log('LOGIN_FAIL action', action.error);
       return {
         ...state,
         loggingIn: false,
@@ -92,12 +116,26 @@ export function load() {
   };
 }
 
-export function login(name) {
+export function signup(name, password, email) {
+  return {
+    types: [SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAIL],
+    promise: (client) => client.post('/signup', {
+      data: {
+        username: name,
+        password: password,
+        email: email
+      }
+    })
+  };
+}
+
+export function login(name, password) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: (client) => client.post('/login', {
       data: {
-        name: name
+        username: name,
+        password: password
       }
     })
   };

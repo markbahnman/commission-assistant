@@ -1,6 +1,9 @@
+import PrettyError from 'pretty-error';
+
+const pretty = new PrettyError();
 // Resolves promise and returns a status code, redirect location, data payload, and error object
 export default function respond(promise) {
-  return (req, res) => {
+  return (req, res, next) => {
     promise(req, res)
     .then((result) => {
       if (result instanceof Function) {
@@ -17,6 +20,7 @@ export default function respond(promise) {
         }
         res.status(reason.status || 500).json(reason);
       }
-    });
+    })
+    .catch(next);
   };
 }

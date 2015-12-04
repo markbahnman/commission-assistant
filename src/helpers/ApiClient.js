@@ -5,25 +5,13 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
-  // let formatedPath = '';
 
-  // if (process.env.NODE_ENV !== 'production') {
-    if (__SERVER__) {
-      // Prepend host and port of the API server to the path.
-      return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
-    } else {
-      // Prepend `/api` to relative URL, to proxy to API server.
-      return '/api' + adjustedPath;
-    }
-  // } else {
-  //   if (__SERVER__) {
-  //     formatedPath = 'http://commissionassistant-api.elasticbeanstalk.com' + adjustedPath;
-  //   } else {
-  //     formatedPath = adjustedPath;
-  //   }
-  // }
-
-  return formatedPath;
+  if (__SERVER__) {
+    // Prepend host and port of the API server to the path.
+    return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
+  }
+    // Prepend `/api` to relative URL, to proxy to API server.
+  return '/api' + adjustedPath;
 }
 
 /*
@@ -36,7 +24,8 @@ class _ApiClient {
   constructor(req) {
     methods.forEach((method) =>
       this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](formatUrl(path));
+        const request = superagent[method](formatUrl(path)).withCredentials();
+        console.log('Initiating request', request);
 
         if (params) {
           request.query(params);
@@ -50,7 +39,14 @@ class _ApiClient {
           request.send(data);
         }
 
-        request.end((err, { body } = {}) => err ? reject(body || err) : resolve(body));
+        request.end((err, { body } = {}) => {
+          console.log('End of api request', body, err);
+          if (err) {
+            reject(body || err);
+          } else {
+            resolve(body);
+          }
+        });
       }));
   }
 }

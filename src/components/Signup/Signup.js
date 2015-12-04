@@ -7,16 +7,18 @@ import * as authActions from 'redux/modules/auth';
 export default class Login extends Component {
   static propTypes = {
     user: PropTypes.object,
-    login: PropTypes.func
+    signup: PropTypes.func
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     const username = this.refs.username;
     const password = this.refs.password;
-    this.props.login(username.value, password.value);
+    const email = this.refs.email;
+    this.props.signup(username.value, password.value, email.value);
     username.value = '';
     password.value = '';
+    email.value = '';
   }
 
   render() {
@@ -27,13 +29,13 @@ export default class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type="text" ref="username" placeholder="username"/>
           <input type="password" ref="password" placeholder="password"/>
+          <input type="email" ref="email" placeholder="email"/>
           <button onClick={this.handleSubmit}>Submit</button>
         </form>
         }
         {user &&
-          <p>
-            {user.name}
-          </p>
+          <div>
+          </div>
         }
       </div>
     );

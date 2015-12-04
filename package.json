@@ -105,6 +105,7 @@
     "clean-webpack-plugin": "^0.1.4",
     "compression": "^1.6.0",
     "cookie-parser": "^1.4.0",
+    "cors": "^2.7.1",
     "credential": "^0.2.6",
     "express": "^4.13.3",
     "express-session": "^1.12.1",

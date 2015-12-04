@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router';
 // import { CounterButton, GithubButton } from 'components';
 import config from '../../config';
-import {Login} from 'components';
+import {Login, Signup} from 'components';
 
 export default class Home extends Component {
   render() {
@@ -26,24 +26,11 @@ export default class Home extends Component {
         </div>
 
         <div className="container">
+          <h3>Signup Component</h3>
+          <Signup />
 
-          <p>This starter boilerplate app uses the following technologies:</p>
-
+          <h3>Login Component</h3>
           <Login />
-
-                    <h3>From the author</h3>
-
-          <p>
-            I cobbled this together from a wide variety of similar "starter" repositories. As I post this in June 2015,
-            all of these libraries are right at the bleeding edge of web development. They may fall out of fashion as
-            quickly as they have come into it, but I personally believe that this stack is the future of web development
-            and will survive for several years. I'm building my new projects like this, and I recommend that you do,
-            too.
-          </p>
-
-          <p>Thanks for taking the time to check this out.</p>
-
-          <p>– Erik Rasmussen</p>
         </div>
       </div>
     );
