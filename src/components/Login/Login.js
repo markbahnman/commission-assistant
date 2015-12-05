@@ -37,7 +37,7 @@ export default class Login extends Component {
         }
         {user &&
           <p>
-            {user.name}
+            Logged in as {user}
           </p>
         }
       </div>

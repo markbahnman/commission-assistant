@@ -66,7 +66,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loggingIn: false,
-        user: action.result
+        user: action.result.user
       };
     case LOGIN_FAIL:
       console.log('LOGIN_FAIL action', action.error);

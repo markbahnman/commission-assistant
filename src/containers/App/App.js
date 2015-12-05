@@ -2,32 +2,30 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import cookie from 'react-cookie';
 // import { IndexLink } from 'react-router';
-// import { LinkContainer } from 'react-router-bootstrap';
-// import { Navbar, NavBrand, Nav, NavItem, CollapsibleNav } from 'react-bootstrap';
 import DocumentMeta from 'react-document-meta';
 // import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-// import { isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth';
+import { isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth';
 // import { InfoBar } from 'components';
 import { pushState } from 'redux-router';
-// import connectData from 'helpers/connectData';
+import connectData from 'helpers/connectData';
 import config from '../../config';
 
-// function fetchData(getState, dispatch) {
-  // const promises = [];
-  // if (!isAuthLoaded(getState())) {
-  //   promises.push(dispatch(loadAuth()));
-  // }
-  // return Promise.all(promises);
-// }
+function fetchData(getState, dispatch) {
+  const promises = [];
+  if (!isAuthLoaded(getState())) {
+    promises.push(dispatch(loadAuth()));
+  }
+  return Promise.all(promises);
+}
 
-// @connectData(fetchData)
+@connectData(fetchData)
 @connect(
-  state => ({user: state.auth.user}),
+  state => ({auth: state.auth}),
   {pushState})
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
-    user: PropTypes.object,
+    auth: PropTypes.object,
     pushState: PropTypes.func.isRequired
   };
 
@@ -50,7 +48,8 @@ export default class App extends Component {
   }
 
   render() {
-    // const {user} = this.props;
+    // const {auth} = this.props;
+    // const {user} = auth;
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>

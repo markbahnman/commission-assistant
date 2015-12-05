@@ -14,6 +14,15 @@ function formatUrl(path) {
   return '/api' + adjustedPath;
 }
 
+function createRequest(method, path) {
+  switch (method) {
+    case 'post':
+    case 'put':
+      return superagent[method](formatUrl(path)).withCredentials();
+    default:
+      return superagent[method](formatUrl(path));
+  }
+}
 /*
  * This silly underscore is here to avoid a mysterious "ReferenceError: ApiClient is not defined" error.
  * See Issue #14. https://github.com/erikras/react-redux-universal-hot-example/issues/14
@@ -24,8 +33,9 @@ class _ApiClient {
   constructor(req) {
     methods.forEach((method) =>
       this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](formatUrl(path)).withCredentials();
-        console.log('Initiating request', request);
+        // console.log('Request for method ', method, ' path ', formatUrl(path));
+        const request = createRequest(method, path);
+        // console.log('Initiating request', request);
 
         if (params) {
           request.query(params);
@@ -40,7 +50,7 @@ class _ApiClient {
         }
 
         request.end((err, { body } = {}) => {
-          console.log('End of api request', body, err);
+          // console.log('End of api request', body, err);
           if (err) {
             reject(body || err);
           } else {

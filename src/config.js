@@ -17,6 +17,9 @@ module.exports = Object.assign({
   port: process.env.PORT,
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || process.env.PORT,
+  redisHost: process.env.REDISHOST || 'localhost',
+  redisPort: process.env.REDISPORT || 6379,
+  cookieAge: 60000,
   app: {
     title: 'Commission Assistant',
     description: 'Modern Tool for Modern Artists',

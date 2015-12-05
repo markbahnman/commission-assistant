@@ -6,6 +6,7 @@ import config from './config';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import httpProxy from 'http-proxy';
+import helmet from 'helmet';
 import path from 'path';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
@@ -30,6 +31,7 @@ const proxy = httpProxy.createProxyServer({
   target: 'http://' + config.apiHost + ':' + config.apiPort
 });
 
+app.use(helmet());
 app.use(compression());
 app.use(cookieParser());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));

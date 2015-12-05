@@ -1,12 +1,15 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import compression from 'compression';
 import session from 'express-session';
+import redisSession from 'connect-redis';
 import bodyParser from 'body-parser';
 import config from '../src/config';
 import * as actions from './actions/index';
 import {mapUrl} from './utils/url.js';
 import respond from './utils/respondFromPromise.js';
+import auth from './utils/authenticateMiddleware.js';
 import PrettyError from 'pretty-error';
 
 const pretty = new PrettyError();
@@ -20,12 +23,21 @@ const corsOptions = {
   }
 };
 
+app.use(helmet());
 app.use(cors(corsOptions));
+
+const RedisStore = redisSession(session);
+const redisOptions = {
+  'host': config.redisHost,
+  'port': config.redisPort
+};
+
 app.use(session({
+  store: new RedisStore(redisOptions),
   secret: 'react and redux rule!!!!',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: config.cookieAge }
 }));
 app.use(bodyParser.json());
 app.use(compression());
@@ -33,6 +45,7 @@ app.use(compression());
 app.post('/login', respond(actions.login));
 app.get('/health', respond(actions.health));
 app.post('/signup', respond(actions.signup));
+app.get('/loadAuth', respond(actions.loadAuth));
 
 // 404 handler
 app.use((req, res) => {

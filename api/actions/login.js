@@ -21,11 +21,11 @@ export default function login(req) {
             pw.verify(user.hash, req.body.password, (err, isValid) => {
               if (isValid) {
                 const authedUser = {
-                  name: req.body.name
+                  name: user.username
                 };
 
-                req.session.user = authedUser;
-                resolve({status: 200, success: true});
+                req.session.user = user.username;
+                resolve({status: 200, success: true, user: user.username});
 
               } else {
                 reject({status: 401, success: false, error: 'Invalid Password'});

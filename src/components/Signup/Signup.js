@@ -40,6 +40,7 @@ export default class Login extends Component {
         }
         {user &&
           <div>
+          Signed up
           </div>
         }
       </div>
