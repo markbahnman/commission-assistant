@@ -46,6 +46,7 @@ app.post('/login', respond(actions.login));
 app.get('/health', respond(actions.health));
 app.post('/signup', respond(actions.signup));
 app.get('/loadAuth', respond(actions.loadAuth));
+app.post('/opening', respond(actions.createOpening));
 
 // 404 handler
 app.use((req, res) => {

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import config from '../../config';
 import {Login, Signup} from 'components';
 
@@ -37,6 +38,7 @@ export default class Home extends Component {
         {user &&
           <div className="container">
             <p>Welcome {user} to Commission Assistant!</p>
+            <Link to="/openings">Create Openings</Link>
           </div>
         }
       </div>

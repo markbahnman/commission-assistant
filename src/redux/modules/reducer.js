@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
 
 import auth from './auth';
+import opening from './opening';
 // import counter from './counter';
 // import {reducer as form} from 'redux-form';
 // import info from './info';
@@ -11,7 +12,8 @@ import auth from './auth';
 
 export default combineReducers({
   router: routerStateReducer,
-  auth
+  auth,
+  opening
   // form,
   // multireducer: multireducer({
   //   counter1: counter,

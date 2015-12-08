@@ -1,29 +1,31 @@
 import React from 'react';
 import {IndexRoute, Route} from 'react-router';
-// import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
+import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
     Home,
+    Openings,
     NotFound
   } from 'containers';
 
-export default () => {
-  // const requireLogin = (nextState, replaceState, cb) => {
-  //   function checkAuth() {
-  //     const { auth: { user }} = store.getState();
-  //     if (!user) {
-  //       // oops, not logged in, so can't be here!
-  //       replaceState(null, '/');
-  //     }
-  //     cb();
-  //   }
+export default (store) => {
+  const requireLogin = (nextState, replaceState, cb) => {
+    function checkAuth() {
+      const { auth: { user }} = store.getState();
+      if (!user) {
+        // oops, not logged in, so can't be here!
+        console.log('Not logged in');
+        replaceState(null, '/');
+      }
+      cb();
+    }
 
-    // if (!isAuthLoaded(store.getState())) {
-    //   store.dispatch(loadAuth()).then(checkAuth);
-    // } else {
-    //   checkAuth();
-    // }
-  // };
+    if (!isAuthLoaded(store.getState())) {
+      store.dispatch(loadAuth()).then(checkAuth);
+    } else {
+      checkAuth();
+    }
+  };
 
   /**
    * Please keep routes in alphabetical order
@@ -34,7 +36,9 @@ export default () => {
       <IndexRoute component={Home}/>
 
       { /* Routes requiring login */ }
-
+      <Route onEnter={requireLogin}>
+        <Route path="openings" component={Openings}/>
+      </Route>
       { /* Routes */ }
 
       { /* Catch all route */ }

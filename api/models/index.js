@@ -5,10 +5,10 @@ import config from '../config';
 
 const env = process.env.NODE_ENV || 'development';
 const cfg = config[env];
-console.log('Attempting to setup conncetion to database', env);
+// console.log('Attempting to setup conncetion to database', env);
 const sequelize = new Sequelize(cfg.database, cfg.username, cfg.password, cfg.options);
 // const sequelize = new Sequelize(cfg.connectURL);
-console.log('Database setup');
+// console.log('Database setup');
 
 const db = {};
 
