@@ -20,7 +20,8 @@ module.exports = {
   entry: {
     'main': [
       './src/client.js'
-    ]
+    ],
+    'vendor': ['./vendor/iconic.min.js']
   },
   output: {
     path: assetsPath,
@@ -76,6 +77,7 @@ module.exports = {
     // optimizations
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
