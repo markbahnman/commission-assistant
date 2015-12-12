@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 // import cookie from 'react-cookie';
 // import { IndexLink } from 'react-router';
 import DocumentMeta from 'react-document-meta';
-// import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth';
-// import { InfoBar } from 'components';
 import { pushState } from 'redux-router';
 import connectData from 'helpers/connectData';
+import {Brand, NavLogin} from 'components';
 import config from '../../config';
 
 function fetchData(getState, dispatch) {
@@ -48,12 +47,19 @@ export default class App extends Component {
   }
 
   render() {
-    // const {auth} = this.props;
-    // const {user} = auth;
     const styles = require('./App.scss');
+    // const logoImage = require('./logo.svg');
     return (
       <div className={styles.app}>
         <DocumentMeta {...config.app}/>
+        <nav>
+          <div className={styles.pullLeft}>
+            <Brand/>
+          </div>
+          <div className={styles.pullRight + ' ' + styles.login}>
+            <NavLogin/>
+          </div>
+        </nav>
         <div className={styles.appContent}>
           {this.props.children}
         </div>

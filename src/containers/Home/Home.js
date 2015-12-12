@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import config from '../../config';
+// import config from '../../config';
 import {Login, Signup} from 'components';
 
 @connect(state => ({auth: state.auth}))
@@ -19,13 +19,6 @@ export default class Home extends Component {
     // const logoImage = require('./logo.png');
     return (
       <div className={styles.home}>
-        <div className={styles.masthead}>
-          <div className="container">
-            <h1>{config.app.title}</h1>
-            <h2>{config.app.description}</h2>
-
-         </div>
-        </div>
         {!user &&
           <div className="container">
             <h3>Signup Component</h3>

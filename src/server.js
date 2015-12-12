@@ -67,11 +67,6 @@ app.use((req, res) => {
 
   const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
 
-  // TODO, check session token against database, get user data, dispatch action
-  // if(req.cookies.userId) {
-  //   store.dispatch(preauth(req.cookies.userId));
-  // }
-
   function hydrateOnClient() {
 
     res.send('<!doctype html>\n' +
@@ -124,16 +119,11 @@ app.use((req, res) => {
 });
 
 if (config.port) {
-  // if (config.isProduction) {
-  //   const io = new SocketIo(server);
-  //   io.path('/api/ws');
-  // }
-
   server.listen(config.port, (err) => {
     if (err) {
       console.error(err);
     }
-    console.info('----\n==> ✅  %s is runnin', config.app.title);
+    console.info('----\n==> %s is running', config.app.title);
     console.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
   });
 } else {

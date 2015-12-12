@@ -1,14 +1,36 @@
+const LOAD = 'commission-assistant/opening/LOAD';
+const LOAD_SUCCESS = 'commission-assistant/opening/LOAD_SUCCESS';
+const LOAD_FAIL = 'commission-assistant/opening/LOAD_FAIL';
 const CREATE_OPENING = 'commission-assistant/opening/CREATE';
 const CREATE_OPENING_SUCCESS = 'commission-assistant/opening/CREATE_SUCCESS';
 const CREATE_OPENING_FAIL = 'commission-assistant/opening/CREATE_FAIL';
 
 const initialState = {
-  created: false,
+  loaded: false,
   openings: []
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case LOAD:
+      return {
+        ...state,
+        loading: true
+      };
+    case LOAD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        openings: action.result.openings
+      };
+    case LOAD_FAIL:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        error: action.error
+      };
     case CREATE_OPENING:
       return {
         ...state,
@@ -16,9 +38,10 @@ export default function reducer(state = initialState, action) {
       };
     case CREATE_OPENING_SUCCESS:
       const openings = [...state.openings];
-      openings.push(action.opening);
+      openings.push(action.result.opening);
       return {
         ...state,
+        loaded: true,
         creating: false,
         created: true,
         openings: openings
@@ -26,6 +49,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_OPENING_FAIL:
       return {
         ...state,
+        loaded: true,
         creating: false,
         created: false,
         error: action.error
@@ -38,10 +62,21 @@ export default function reducer(state = initialState, action) {
 export function createOpening(title) {
   return {
     types: [CREATE_OPENING, CREATE_OPENING_SUCCESS, CREATE_OPENING_FAIL],
-    promise: (client) => client.post('/createOpening', {
+    promise: (client) => client.post('/opening', {
       data: {
         title: title
       }
     })
+  };
+}
+
+export function areOpeningsLoaded(globalState) {
+  return globalState.opening && globalState.opening.loaded;
+}
+
+export function loadOpenings() {
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: (client) => client.get('/openings')
   };
 }

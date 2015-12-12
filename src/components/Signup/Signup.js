@@ -24,8 +24,9 @@ export default class Login extends Component {
   render() {
     const {auth} = this.props;
     const {signingUp, user, signupError} = auth;
+    const styles = require('./Signup.scss');
     return (
-      <div>
+      <div className={styles.inline}>
         <div className="signupError">
         {signingUp && !user && 'Signing up'}
         {!signingUp && !user && signupError && <p>{signupError.error}</p>}

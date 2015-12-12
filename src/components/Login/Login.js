@@ -22,8 +22,9 @@ export default class Login extends Component {
   render() {
     const {auth} = this.props;
     const {user, loggingIn, loaded, loginError } = auth;
+    const styles = require('./Login.scss');
     return (
-      <div>
+      <div className={styles.inline}>
         <div className="loginError">
         {loggingIn && !loaded && 'Loading' }
         {!loggingIn && !loaded && loginError && <p>{loginError.error}</p>}
@@ -34,11 +35,6 @@ export default class Login extends Component {
           <input type="password" ref="password" placeholder="password"/>
           <button onClick={this.handleSubmit}>Submit</button>
         </form>
-        }
-        {user &&
-          <p>
-            Logged in as {user}
-          </p>
         }
       </div>
     );

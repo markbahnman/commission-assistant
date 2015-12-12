@@ -46,7 +46,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         signingUp: false,
-        user: action.result
+        user: action.result.user
       };
     case SIGNUP_FAIL:
       return {
@@ -56,13 +56,11 @@ export default function reducer(state = initialState, action) {
         signupError: action.error
       };
     case LOGIN:
-      console.log('LOGIN action');
       return {
         ...state,
         loggingIn: true
       };
     case LOGIN_SUCCESS:
-      console.log('LOGIN_SUCCESS action', action.result);
       return {
         ...state,
         loggingIn: false,

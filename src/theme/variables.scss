@@ -10,6 +10,15 @@
 $cyan: #33e0ff;
 $humility: #777;
 
+// Colour Scheme
+$primary: #E9212E;
+$secondary: #39BEC1;
+$grey: #323232;
+$test: lighten(black, 10%);
+$secondary-two: darken($secondary, 3%);
+$primary-two: darken($primary, 3.3%);
+$primary-three: darken($primary, 6.3%);
+
 // Bootstrap Variables
 $brand-primary: darken(#428bca, 6.5%);
 $brand-secondary: #e25139;

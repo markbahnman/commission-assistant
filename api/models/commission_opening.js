@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Commission_Opening = sequelize.define('Commission_Opening', {
     author: DataTypes.STRING,
-    name: DataTypes.STRING
+    title: DataTypes.STRING
   },
   {
     classMethods: {

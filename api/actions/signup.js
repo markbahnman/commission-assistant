@@ -38,7 +38,8 @@ export default function signup(req) {
       models.User
         .create(user)
         .then(() => {
-          resolve({status: 201, success: true});
+          req.session.user = user.username;
+          resolve({status: 201, success: true, user: user.username});
         })
         .catch((error) => {
           console.error('Error creating new user', error);
