@@ -13,6 +13,14 @@ export default class NavLogin extends Component {
     signup: false
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if ((!prevState.login && this.state.login) || (!prevState.signup && this.state.signup)) {
+      if (window && window.IconicJS && document) {
+        window.IconicJS().inject(document.getElementsByClassName('iconic'));
+      }
+    }
+  }
+
   toggleLogin = () => this.setState({login: !this.state.login, signup: false});
 
   toggleSignup = () => this.setState({signup: !this.state.signup, login: false});
@@ -30,13 +38,13 @@ export default class NavLogin extends Component {
       }
       {!user && login &&
         <div>
-          <img onClick={this.handleBack} className={'iconic ' + styles.back} src="svg/circle-x.svg"/>
+          <img onClick={this.handleBack} className={'iconic inject ' + styles.back} data-src="svg/circle-x.svg"/>
           <Login/>
         </div>
       }
       {!user && signup &&
         <div>
-          <img onClick={this.handleBack} className={'iconic ' + styles.back} src="svg/circle-x.svg"/>
+          <img onClick={this.handleBack} className={'iconic inject ' + styles.back} data-src="svg/circle-x.svg"/>
           <Signup/>
         </div>
       }

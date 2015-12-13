@@ -1,7 +1,9 @@
+@import "../../theme/variables.scss";
 .group {
   display: inline-block;
 }
 .back {
+  fill: $primary-three;
   width: 24px;
   height: 24px;
   vertical-align: middle;

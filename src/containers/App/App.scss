@@ -15,10 +15,6 @@
 .pullRight {
   float: right;
 }
-.test {
-  color: $test;
-}
-
 nav {
   top: 0;
   right: 0;
@@ -29,7 +25,8 @@ nav {
   background-color: $grey;
 }
 
-// .app {
+.app {
+  min-height: 380px;
 //   .brand {
 //     position: absolute;
 //     $size: 40px;
@@ -47,7 +44,7 @@ nav {
 //     font-size: 2em;
 //     line-height: 20px;
 //   }
-// }
+}
 .appContent {
   margin: 50px 0; // for fixed navbar
 }

@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-// import config from '../../config';
-import {Login, Signup} from 'components';
 
 @connect(state => ({auth: state.auth}))
 export default class Home extends Component {
@@ -20,12 +18,8 @@ export default class Home extends Component {
     return (
       <div className={styles.home}>
         {!user &&
-          <div className="container">
-            <h3>Signup Component</h3>
-            <Signup />
-
-            <h3>Login Component</h3>
-            <Login />
+          <div>
+            <h1>Welcome to Commission Assistant</h1>
           </div>
         }
         {user &&

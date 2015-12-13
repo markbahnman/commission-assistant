@@ -1,41 +1,11 @@
 {
   "javascript": {
-    "main": "http://localhost:3001/dist/main-2916a0d32a3db4c7595f.js",
-    "vendor": "http://localhost:3001/dist/vendor.bundle.js"
+    "main": "http://localhost:3001/dist/main-3e3280875b987913dc8a.js",
+    "vendor": "http://localhost:3001/dist/vendor-3e3280875b987913dc8a.js"
   },
   "styles": {},
   "assets": {
     "./src/logo.svg": "data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAuMjIgNTAuMDgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1taXRlcmxpbWl0OjEwO30uY2xzLTJ7ZmlsbDojZTkyMTJlO30uY2xzLTN7ZmlsbDojMzliZWMxO30uY2xzLTR7ZmlsbDojMzIzMjMyO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Y29tbWlzc2lvbi1hc3Npc3RhbnQtc3ZnLWxvZ28tMjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDUwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjA0IDAuMDQpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDQgMC4wNCkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTAwLjExIDUwLjA1IDE1MC4xNyAwLjAyIDAuMDQgMC4wMiAwIDUwLjA1IDEwMC4xMSA1MC4wNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxNTAuMTcgNTAuMDggMjAwLjIyIDAuMDMgMTUwLjE3IDAuMDEgMTAwLjExIDUwLjA2IDE1MC4xNyA1MC4wOCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIyMDAuMTggNTAuMDUgMjAwLjE4IDE3LjU2IDIwMC4xOCAwIDE1MC4xNSA1MC4wNCAyMDAuMTggNTAuMDUiLz48L3N2Zz4=",
-    "./src/components/Brand/Brand.scss": {
-      "brand": "brand___eBt7O",
-      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\nh1 {\n  color: white;\n}\n\n.brand___eBt7O {\n  margin: 15px 15px;\n  font-size: 18px;\n}\n"
-    },
-    "./src/containers/App/App.scss": {
-      "pullLeft": "pullLeft___3O2cb",
-      "login": "login___3BTot",
-      "pullRight": "pullRight___3PWmJ",
-      "test": "test___1YzI3",
-      "appContent": "appContent___gsYlq",
-      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.pullLeft___3O2cb {\n  float: left;\n  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAuMjIgNTAuMDgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1taXRlcmxpbWl0OjEwO30uY2xzLTJ7ZmlsbDojZTkyMTJlO30uY2xzLTN7ZmlsbDojMzliZWMxO30uY2xzLTR7ZmlsbDojMzIzMjMyO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Y29tbWlzc2lvbi1hc3Npc3RhbnQtc3ZnLWxvZ28tMjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDUwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjA0IDAuMDQpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDQgMC4wNCkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTAwLjExIDUwLjA1IDE1MC4xNyAwLjAyIDAuMDQgMC4wMiAwIDUwLjA1IDEwMC4xMSA1MC4wNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxNTAuMTcgNTAuMDggMjAwLjIyIDAuMDMgMTUwLjE3IDAuMDEgMTAwLjExIDUwLjA2IDE1MC4xNyA1MC4wOCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIyMDAuMTggNTAuMDUgMjAwLjE4IDE3LjU2IDIwMC4xOCAwIDE1MC4xNSA1MC4wNCAyMDAuMTggNTAuMDUiLz48L3N2Zz4=);\n  background-repeat: no-repeat;\n  height: 48px;\n}\n\n.login___3BTot {\n  width: auto;\n  vertical-align: middle;\n  margin: 4px 0 0 0;\n  display: inline-block;\n  padding: 10px 15px;\n}\n\n.pullRight___3PWmJ {\n  float: right;\n}\n\n.test___1YzI3 {\n  color: #1a1a1a;\n}\n\nnav {\n  top: 0;\n  right: 0;\n  left: 0;\n  position: fixed;\n  display: table;\n  width: 100%;\n  background-color: #323232;\n}\n\n.appContent___gsYlq {\n  margin: 50px 0;\n}\n"
-    },
-    "./src/containers/Home/Home.scss": {
-      "home": "home___1bkob",
-      "masthead": "masthead___3qL9t",
-      "logo": "logo___1_SL2",
-      "humility": "humility___Bedqz",
-      "github": "github___qJ_u3",
-      "counterContainer": "counterContainer___Jx2OO",
-      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.home___1bkob dd {\n  margin-bottom: 15px;\n}\n\n.masthead___3qL9t {\n  background: #2d2d2d;\n  padding: 40px 20px;\n  color: white;\n  text-align: center;\n}\n\n.masthead___3qL9t .logo___1_SL2 {\n  margin: auto;\n  height: 200px;\n  width: 200px;\n  border-radius: 100px;\n  border: 1px solid #33e0ff;\n  box-shadow: inset 0 0 10px #33e0ff;\n  vertical-align: middle;\n}\n\n.masthead___3qL9t .logo___1_SL2 p {\n  line-height: 200px;\n  margin: 0px;\n}\n\n.masthead___3qL9t .logo___1_SL2 img {\n  width: 75%;\n  margin: auto;\n}\n\n.masthead___3qL9t h1 {\n  color: #33e0ff;\n  font-size: 4em;\n}\n\n.masthead___3qL9t h2 {\n  color: #ddd;\n  font-size: 2em;\n  margin: 20px;\n}\n\n.masthead___3qL9t a {\n  color: #ddd;\n}\n\n.masthead___3qL9t p {\n  margin: 10px;\n}\n\n.masthead___3qL9t .humility___Bedqz {\n  color: #777;\n}\n\n.masthead___3qL9t .humility___Bedqz a {\n  color: #777;\n}\n\n.masthead___3qL9t .github___qJ_u3 {\n  font-size: 1.5em;\n}\n\n.counterContainer___Jx2OO {\n  text-align: center;\n  margin: 20px;\n}\n"
-    },
-    "./src/containers/Openings/Openings.scss": {
-      "openings": "openings___3G-WO",
-      "_style": ".openings___3G-WO {\n  color: #c9c9c9;\n}\n"
-    },
-    "./src/components/NavLogin/NavLogin.scss": {
-      "group": "group___1vYV6",
-      "back": "back___3cNtD",
-      "_style": ".group___1vYV6 {\n  display: inline-block;\n}\n\n.back___3cNtD {\n  width: 24px;\n  height: 24px;\n  vertical-align: middle;\n  margin-right: 5px;\n  display: inline-block;\n}\n"
-    },
     "./src/components/Login/Login.scss": {
       "inline": "inline___sXM8f",
       "_style": ".inline___sXM8f {\n  display: inline-block;\n}\n"
@@ -43,6 +13,31 @@
     "./src/components/Signup/Signup.scss": {
       "inline": "inline___20kWr",
       "_style": ".inline___20kWr {\n  display: inline-block;\n}\n"
+    },
+    "./src/components/Brand/Brand.scss": {
+      "brand": "brand___eBt7O",
+      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.brand___eBt7O {\n  margin: 15px 15px;\n  color: white;\n  font-size: 18px;\n}\n"
+    },
+    "./src/components/NavLogin/NavLogin.scss": {
+      "group": "group___1vYV6",
+      "back": "back___3cNtD",
+      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.group___1vYV6 {\n  display: inline-block;\n}\n\n.back___3cNtD {\n  fill: #d51522;\n  width: 24px;\n  height: 24px;\n  vertical-align: middle;\n  margin-right: 5px;\n  display: inline-block;\n}\n"
+    },
+    "./src/containers/App/App.scss": {
+      "pullLeft": "pullLeft___3O2cb",
+      "login": "login___3BTot",
+      "pullRight": "pullRight___3PWmJ",
+      "app": "app___3sz-J",
+      "appContent": "appContent___gsYlq",
+      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.pullLeft___3O2cb {\n  float: left;\n  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAuMjIgNTAuMDgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1taXRlcmxpbWl0OjEwO30uY2xzLTJ7ZmlsbDojZTkyMTJlO30uY2xzLTN7ZmlsbDojMzliZWMxO30uY2xzLTR7ZmlsbDojMzIzMjMyO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Y29tbWlzc2lvbi1hc3Npc3RhbnQtc3ZnLWxvZ28tMjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDUwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjA0IDAuMDQpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDQgMC4wNCkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTAwLjExIDUwLjA1IDE1MC4xNyAwLjAyIDAuMDQgMC4wMiAwIDUwLjA1IDEwMC4xMSA1MC4wNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxNTAuMTcgNTAuMDggMjAwLjIyIDAuMDMgMTUwLjE3IDAuMDEgMTAwLjExIDUwLjA2IDE1MC4xNyA1MC4wOCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIyMDAuMTggNTAuMDUgMjAwLjE4IDE3LjU2IDIwMC4xOCAwIDE1MC4xNSA1MC4wNCAyMDAuMTggNTAuMDUiLz48L3N2Zz4=);\n  background-repeat: no-repeat;\n  height: 48px;\n}\n\n.login___3BTot {\n  width: auto;\n  vertical-align: middle;\n  margin: 4px 0 0 0;\n  display: inline-block;\n  padding: 10px 15px;\n}\n\n.pullRight___3PWmJ {\n  float: right;\n}\n\nnav {\n  top: 0;\n  right: 0;\n  left: 0;\n  position: fixed;\n  display: table;\n  width: 100%;\n  background-color: #323232;\n}\n\n.app___3sz-J {\n  min-height: 380px;\n}\n\n.appContent___gsYlq {\n  margin: 50px 0;\n}\n"
+    },
+    "./src/containers/Home/Home.scss": {
+      "home": "home___1bkob",
+      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.home___1bkob {\n  color: #36b2b5;\n}\n"
+    },
+    "./src/containers/Openings/Openings.scss": {
+      "openings": "openings___3G-WO",
+      "_style": ".openings___3G-WO {\n  color: #c9c9c9;\n}\n"
     }
   }
 }
