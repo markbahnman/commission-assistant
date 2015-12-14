@@ -18,8 +18,40 @@ export default class Home extends Component {
     return (
       <div className={styles.home}>
         {!user &&
-          <div>
+          <div className={styles.content}>
             <h1>Welcome to Commission Assistant</h1>
+            <div>
+              <ul className={styles.features}>
+                <li className={styles.feature}>
+                  <h3>Streamline Opening</h3>
+                  <img className={'iconic iconic-md ' + styles.icon} data-src="svg/tools.svg"/>
+                  <p>Make opening for commissions as simple as a click.</p>
+                </li>
+                <li className={styles.feature}>
+                  <h3>Handle Payments</h3>
+                  <img className={'iconic iconic-md ' + styles.icon} data-src="svg/credit-card.svg"/>
+                  <p>Feature text</p>
+                </li>
+                <li className={styles.feature}>
+                  <h3>Manage Clients</h3>
+                  <img className={'iconic iconic-md ' + styles.icon} data-src="svg/people.svg"/>
+                  <p>Feature text</p>
+                </li>
+                <li className={styles.feature}>
+                  <h3>Feature 4</h3>
+                  <p>Feature text</p>
+                </li>
+                <li className={styles.feature}>
+                  <h3>Feataure 5</h3>
+                  <p>Feature text</p>
+                </li>
+                <li className={styles.feature}>
+                  <h3>Taxes</h3>
+                  <img className={'iconic iconic-md ' + styles.icon} data-src="svg/dollar.svg"/>
+                  <p>Feature text</p>
+                </li>
+              </ul>
+            </div>
           </div>
         }
         {user &&

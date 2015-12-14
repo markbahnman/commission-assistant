@@ -14,7 +14,7 @@ $humility: #777;
 $primary: #E9212E;
 $secondary: #39BEC1;
 $grey: #323232;
-$test: lighten(black, 10%);
+$light-grey: lighten($grey, 25%);
 $secondary-two: darken($secondary, 3%);
 $primary-two: darken($primary, 3.3%);
 $primary-three: darken($primary, 6.3%);

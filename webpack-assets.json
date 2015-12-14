@@ -1,7 +1,6 @@
 {
   "javascript": {
-    "main": "http://localhost:3001/dist/main-3e3280875b987913dc8a.js",
-    "vendor": "http://localhost:3001/dist/vendor-3e3280875b987913dc8a.js"
+    "main": "http://localhost:3001/dist/main-9bad0f577766c0496dd6.js"
   },
   "styles": {},
   "assets": {
@@ -24,16 +23,20 @@
       "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.group___1vYV6 {\n  display: inline-block;\n}\n\n.back___3cNtD {\n  fill: #d51522;\n  width: 24px;\n  height: 24px;\n  vertical-align: middle;\n  margin-right: 5px;\n  display: inline-block;\n}\n"
     },
     "./src/containers/App/App.scss": {
+      "app": "app___3sz-J",
       "pullLeft": "pullLeft___3O2cb",
       "login": "login___3BTot",
       "pullRight": "pullRight___3PWmJ",
-      "app": "app___3sz-J",
       "appContent": "appContent___gsYlq",
-      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.pullLeft___3O2cb {\n  float: left;\n  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAuMjIgNTAuMDgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1taXRlcmxpbWl0OjEwO30uY2xzLTJ7ZmlsbDojZTkyMTJlO30uY2xzLTN7ZmlsbDojMzliZWMxO30uY2xzLTR7ZmlsbDojMzIzMjMyO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Y29tbWlzc2lvbi1hc3Npc3RhbnQtc3ZnLWxvZ28tMjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDUwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjA0IDAuMDQpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDQgMC4wNCkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTAwLjExIDUwLjA1IDE1MC4xNyAwLjAyIDAuMDQgMC4wMiAwIDUwLjA1IDEwMC4xMSA1MC4wNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxNTAuMTcgNTAuMDggMjAwLjIyIDAuMDMgMTUwLjE3IDAuMDEgMTAwLjExIDUwLjA2IDE1MC4xNyA1MC4wOCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIyMDAuMTggNTAuMDUgMjAwLjE4IDE3LjU2IDIwMC4xOCAwIDE1MC4xNSA1MC4wNCAyMDAuMTggNTAuMDUiLz48L3N2Zz4=);\n  background-repeat: no-repeat;\n  height: 48px;\n}\n\n.login___3BTot {\n  width: auto;\n  vertical-align: middle;\n  margin: 4px 0 0 0;\n  display: inline-block;\n  padding: 10px 15px;\n}\n\n.pullRight___3PWmJ {\n  float: right;\n}\n\nnav {\n  top: 0;\n  right: 0;\n  left: 0;\n  position: fixed;\n  display: table;\n  width: 100%;\n  background-color: #323232;\n}\n\n.app___3sz-J {\n  min-height: 380px;\n}\n\n.appContent___gsYlq {\n  margin: 50px 0;\n}\n"
+      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.app___3sz-J {\n  max-width: 1120px;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.app___3sz-J:after {\n  content: \" \";\n  display: block;\n  clear: both;\n}\n\n.app___3sz-J .pullLeft___3O2cb {\n  float: left;\n  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAuMjIgNTAuMDgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1taXRlcmxpbWl0OjEwO30uY2xzLTJ7ZmlsbDojZTkyMTJlO30uY2xzLTN7ZmlsbDojMzliZWMxO30uY2xzLTR7ZmlsbDojMzIzMjMyO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Y29tbWlzc2lvbi1hc3Npc3RhbnQtc3ZnLWxvZ28tMjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDUwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjA0IDAuMDQpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAwLjA3LDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDQgMC4wNCkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTAwLjExIDUwLjA1IDE1MC4xNyAwLjAyIDAuMDQgMC4wMiAwIDUwLjA1IDEwMC4xMSA1MC4wNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxNTAuMTcgNTAuMDggMjAwLjIyIDAuMDMgMTUwLjE3IDAuMDEgMTAwLjExIDUwLjA2IDE1MC4xNyA1MC4wOCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIyMDAuMTggNTAuMDUgMjAwLjE4IDE3LjU2IDIwMC4xOCAwIDE1MC4xNSA1MC4wNCAyMDAuMTggNTAuMDUiLz48L3N2Zz4=);\n  background-repeat: no-repeat;\n  height: 48px;\n}\n\n.app___3sz-J .login___3BTot {\n  width: auto;\n  vertical-align: middle;\n  margin: 4px 0 0 0;\n  display: inline-block;\n  padding: 10px 15px;\n}\n\n.app___3sz-J .pullRight___3PWmJ {\n  float: right;\n}\n\n.app___3sz-J nav {\n  top: 0;\n  right: 0;\n  left: 0;\n  position: fixed;\n  display: table;\n  width: 100%;\n  background-color: #323232;\n}\n\n.app___3sz-J .appContent___gsYlq {\n  min-height: 380px;\n  margin-top: 50px;\n}\n"
     },
     "./src/containers/Home/Home.scss": {
       "home": "home___1bkob",
-      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.home___1bkob {\n  color: #36b2b5;\n}\n"
+      "content": "content___3arQi",
+      "features": "features___19Yqo",
+      "feature": "feature___1fTHS",
+      "icon": "icon___c1Nji",
+      "_style": "/**\n *  Define scss variables here.\n *\n *  Available options for Bootstrap:\n *  http://getbootstrap.com/customize/\n *\n */\n.home___1bkob {\n  color: #323232;\n  text-align: center;\n}\n\n.home___1bkob .content___3arQi {\n  padding-top: 10px;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo {\n  color: white;\n  padding: 1.69492%;\n  padding-bottom: 0;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo:after {\n  content: \" \";\n  display: block;\n  clear: both;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo .feature___1fTHS {\n  width: 32.20339%;\n  float: left;\n  background-color: #39BEC1;\n  min-height: 10em;\n  margin-bottom: 1.69492%;\n  list-style-type: none;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo .feature___1fTHS:nth-child(3n + 1) {\n  margin-left: 0;\n  margin-right: -100%;\n  clear: both;\n  margin-left: 0;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo .feature___1fTHS:nth-child(3n + 2) {\n  margin-left: 33.89831%;\n  margin-right: -100%;\n  clear: none;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo .feature___1fTHS:nth-child(3n + 3) {\n  margin-left: 67.79661%;\n  margin-right: -100%;\n  clear: none;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo .feature___1fTHS p {\n  margin: 10px;\n}\n\n.home___1bkob .content___3arQi .features___19Yqo .feature___1fTHS .icon___c1Nji {\n  fill: #323232;\n}\n"
     },
     "./src/containers/Openings/Openings.scss": {
       "openings": "openings___3G-WO",

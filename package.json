@@ -143,6 +143,7 @@
     "strip-loader": "^0.1.0",
     "style-loader": "^0.13.0",
     "superagent": "^1.4.0",
+    "susy": "^2.2.9",
     "url-loader": "^0.5.7",
     "validator": "^4.3.0",
     "webpack": "^1.12.9",

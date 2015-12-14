@@ -1,5 +1,30 @@
+@import "~susy/sass/susy";
 @import "../../theme/variables.scss";
 
 .home {
-  color: $secondary-two;
+  color: $grey;
+  text-align: center;
+  .content {
+    padding-top: 10px;
+    .features {
+      @include susy-clearfix;
+      color: white;
+      padding: gutter(12);
+      padding-bottom: 0;
+      .feature {
+        @include gallery(4 of 12);
+        background-color: $secondary;
+        min-height: 10em;
+        margin-bottom: gutter(12);
+        list-style-type: none;
+        // margin: 10px;
+        p {
+          margin: 10px;
+        }
+        .icon {
+          fill: $grey;
+        }
+      }
+    }
+  }
 }
