@@ -1,7 +1,8 @@
-import app from '../api';
+import {expect} from 'chai';
+import app from '../../api';
 import Bluebird from 'bluebird';
 import request from 'supertest';
-import models from '../models';
+import models from '../../models';
 
 describe('User Signup', () => {
   before((done) => {
@@ -15,7 +16,7 @@ describe('User Signup', () => {
 
   afterEach(() => {
     return Bluebird.all([
-      models.User.destroy({ truncate: true })
+      models.User.sync({ force: true })
     ]);
   });
 
@@ -29,7 +30,19 @@ describe('User Signup', () => {
     request(app)
     .post('/signup')
     .send({ username: 'johndoe', password: 'test', email: 'test@example.com'})
-    .expect(201, {status: 201, success: true}, done);
+    .expect(201, {status: 201, success: true, user: 'johndoe'}, done);
+  });
+
+  it('sets the cookie when creating a user', (done) => {
+    request.agent(app)
+    .post('/signup')
+    .send({ username: 'janedoe', password: 'test', email: 'jane@example.com'})
+    .end((err, res) => {
+      expect(err).to.not.be.ok;
+      expect(res.status).to.equal(201);
+      expect(res.headers['set-cookie']).to.exist;
+      done();
+    });
   });
 
   it('returns an error with bad user email', (done) => {

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   {
     classMethods: {
       associate: function(models) {
-        User.hasMany(models.Commission_Opening)
+        User.hasMany(models.Opening)
       }
     }
   });

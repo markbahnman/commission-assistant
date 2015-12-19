@@ -1,0 +1,43 @@
+@import "~susy/sass/susy";
+@import "../../theme/variables.scss";
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.card {
+  @include gallery(4 of 12);
+  background-color: $secondary;
+  border-radius: 1em;
+  color: $grey;
+  .header {
+    @include span(4 of 4);
+    box-shadow: 0px 2px 2px -2px $grey;
+    text-align: center;
+  }
+  .example {
+    @include span(1 of 4);
+    svg {
+      width: span(1 of 1 first);
+      margin-left: gutter(1);
+    }
+  }
+  .description {
+    @include span(3 of 4 last);
+    text-align: center;
+    p {
+      padding: 5px;
+    }
+  }
+  button {
+    @include span(2 of 4);
+    margin-left: span(1 of 4) + gutter(4);
+    margin-bottom: gutter(4);
+    padding: 10px;
+    background-color: $primary;
+    border-radius: 0.5em;
+  }
+}

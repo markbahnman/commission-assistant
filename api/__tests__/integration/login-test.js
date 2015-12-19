@@ -1,7 +1,8 @@
-import app from '../api';
+import app from '../../api';
 import Bluebird from 'bluebird';
 import request from 'supertest';
-import models from '../models';
+import models from '../../models';
+import {expect} from 'chai';
 
 describe('User Login', () => {
   before((done) => {
@@ -23,7 +24,7 @@ describe('User Login', () => {
 
   afterEach(() => {
     return Bluebird.all([
-      models.User.destroy({ truncate: true })
+      models.User.sync({force: true})
     ]);
   });
 
@@ -31,7 +32,7 @@ describe('User Login', () => {
     request(app)
       .post('/login')
       .send({username: 'testing', password: 'test'})
-      .expect(200, {status: 200, success: true}, done);
+      .expect(200, {status: 200, success: true, user: 'testing'}, done);
   });
 
   it('fails to log in a user with incorrect details', (done) => {
@@ -39,5 +40,16 @@ describe('User Login', () => {
       .post('/login')
       .send({username: 'testing', password: 'wrongpassword'})
       .expect(401, {status: 401, success: false, error: 'Invalid Password'}, done);
+  });
+
+  it('logs in with a cookie', (done) => {
+    request.agent(app)
+      .post('/login')
+      .send({username: 'testing', password: 'test'})
+      .end((err, res) => {
+        expect(err).to.not.exist;
+        expect(res.status).to.equal(200);
+        done();
+      });
   });
 });

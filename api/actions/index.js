@@ -11,4 +11,7 @@ export health from './health';
 // Commission Openings
 export createOpening from './createOpening';
 export loadOpenings from './loadOpenings';
+
+// Commission Opening Options
+export createOption from './createOption';
 // export * as widget from './widget/index';

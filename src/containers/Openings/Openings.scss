@@ -1,3 +1,9 @@
+@import "~susy/sass/susy";
+@import "../../theme/variables.scss";
 .openings {
   color: #c9c9c9;
+  .cards {
+    padding: gutter(12);
+    @include susy-clearfix;
+  }
 }

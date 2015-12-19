@@ -1,6 +1,7 @@
 @import "~susy/sass/susy";
 @import "../../theme/variables.scss";
 $suzy: (
+global-box-sizing: border-box,
 columns: 12,
 container: 1120px
 );

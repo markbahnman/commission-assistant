@@ -1,12 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const Commission_Opening = sequelize.define('Commission_Opening', {
+  const Opening = sequelize.define('Opening', {
     author: DataTypes.STRING,
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    price: DataTypes.DECIMAL(10, 2),
+    description: DataTypes.STRING
   },
   {
     classMethods: {
       associate: function(models) {
-        Commission_Opening
+        Opening
         .belongsTo(models.User, {
           onDelete: "CASCADE",
           foreignKey: {
@@ -17,5 +19,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  return Commission_Opening;
+  return Opening;
 };

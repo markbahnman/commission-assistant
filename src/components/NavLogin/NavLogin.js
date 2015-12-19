@@ -34,7 +34,7 @@ export default class NavLogin extends Component {
     return (
       <div>
       {user &&
-        <p>{user}</p>
+        <p className={styles.loggedIn}>{user}</p>
       }
       {!user && login &&
         <div>
