@@ -8,7 +8,7 @@
     "start-prod": "better-npm-run start-prod",
     "start-prod-api": "better-npm-run start-prod-api",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
-    "prestart": "webpack --display-error-details --config webpack/prod.config.js",
+    "postinstall": "webpack --display-error-details --config webpack/prod.config.js",
     "ebs": "better-npm-run ebs",
     "lint": "eslint -c .eslintrc src api",
     "lint-watch": "esw -c .eslintrc src api --watch",
