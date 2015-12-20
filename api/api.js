@@ -15,7 +15,7 @@ import PrettyError from 'pretty-error';
 const pretty = new PrettyError();
 const app = express();
 
-const whitelist = ['http://localhost', 'http://localhost:3000', 'http://localhost:3001'];
+const whitelist = ['http://localhost', 'http://localhost:3000', 'http://localhost:3001', 'http://commissionassistantweb.elasticbeanstalk.com', 'http://commissionassistantapi.elasticbeanstalk.com'];
 const corsOptions = {
   origin: function(origin, callback){
     const originIsWhitelisted = whitelist.indexOf(origin) !== -1;
