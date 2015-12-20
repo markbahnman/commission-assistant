@@ -1,11 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Login, Signup} from 'components';
+import {logout} from 'redux/modules/auth';
 
-@connect(state => ({ auth: state.auth }))
+@connect(state => ({ auth: state.auth }),
+         {logout})
 export default class NavLogin extends Component {
   static propTypes = {
-    auth: PropTypes.object
+    auth: PropTypes.object,
+    logout: PropTypes.func.isRequired
   }
 
   state = {
@@ -27,6 +30,11 @@ export default class NavLogin extends Component {
 
   handleBack = () => this.setState({signup: false, login: false});
 
+  handleLogout = (event) => {
+    event.preventDefault();
+    this.props.logout();
+  }
+
   render() {
     const {auth: {user}} = this.props;
     const {login, signup} = this.state;
@@ -34,7 +42,10 @@ export default class NavLogin extends Component {
     return (
       <div>
       {user &&
+        <div className={styles.user}>
         <p className={styles.loggedIn}>{user}</p>
+        <a onClick={this.handleLogout}>logout</a>
+        </div>
       }
       {!user && login &&
         <div>

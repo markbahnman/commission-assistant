@@ -7,6 +7,16 @@
   -webkit-margin-before: 0;
   margin: 0;
 }
+.user {
+  p {
+    display: inline-block;
+    margin-right: 5px;
+    color: white;
+  }
+  a {
+    color: $light-grey;
+  }
+}
 .back {
   fill: $primary-three;
   width: 24px;

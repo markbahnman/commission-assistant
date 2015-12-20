@@ -2,7 +2,9 @@ import Express from 'express';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import config from './config';
+import redisSession from 'connect-redis';
 // import favicon from 'serve-favicon';
+import session from 'express-session';
 import compression from 'compression';
 import httpProxy from 'http-proxy';
 import helmet from 'helmet';
@@ -31,6 +33,20 @@ console.log('host:',process.env.HOST);
 
 app.use(helmet());
 app.use(compression());
+
+const RedisStore = redisSession(session);
+const redisOptions = {
+  'host': config.redisHost,
+  'port': config.redisPort
+};
+
+app.use(session({
+  store: new RedisStore(redisOptions),
+  secret: 'react and redux rule!!!!',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: config.cookieAge }
+}));
 // app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
 // Proxy to API server

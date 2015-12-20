@@ -49,6 +49,7 @@ app.get('/loadAuth', respond(actions.loadAuth));
 app.post('/openings', respond(actions.createOpening));
 app.get('/openings', respond(actions.loadOpenings));
 app.post('/options', respond(actions.createOption));
+app.get('/logout', respond(actions.logout));
 
 // 404 handler
 app.use((req, res) => {

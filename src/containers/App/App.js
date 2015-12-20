@@ -42,9 +42,6 @@ export default class App extends Component {
     // }
   // }
 
-  handleLogout = (event) => {
-    event.preventDefault();
-  }
 
   render() {
     const styles = require('./App.scss');
