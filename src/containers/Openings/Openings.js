@@ -37,12 +37,14 @@ export default class CreateOpening extends Component {
     return (
       <div className={styles.openings}>
         <LoginError />
-        <h1>Create New Opening</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" ref="title" placeholder="title"/>
-          <input type="currency" ref="price" placeholder="price"/>
-          <button onClick={this.handleSubmit}>Create</button>
-        </form>
+        <div className={styles.heading}>
+          <h1>Create New Opening</h1>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" ref="title" placeholder="title"/>
+            <input type="currency" ref="price" placeholder="price"/>
+            <button onClick={this.handleSubmit}>Create</button>
+          </form>
+        </div>
         <div className={styles.cards}>
           {openings.map((opening) => {
             return <OpeningCard key={opening.id} opening={opening}/>;

@@ -32,7 +32,6 @@ const redisOptions = {
   'port': config.redisPort
 };
 
-console.log('Connecting to redis session store', config.redisHost, config.redisPort);
 app.use(session({
   store: new RedisStore(redisOptions),
   secret: 'react and redux rule!!!!',

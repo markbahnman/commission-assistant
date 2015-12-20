@@ -2,8 +2,14 @@
 @import "../../theme/variables.scss";
 .openings {
   color: #c9c9c9;
+  .heading {
+    @include span(12 of 12);
+    margin-bottom: gutter(12);
+    text-align: center;
+  }
   .cards {
     padding: gutter(12);
+    padding-bottom:0;
     @include susy-clearfix;
   }
 }
