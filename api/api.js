@@ -19,7 +19,6 @@ const whitelist = ['http://localhost', 'http://localhost:3000', 'http://localhos
 const corsOptions = {
   origin: function(origin, callback){
     const originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-    if (!originIsWhitelisted) console.log('Origin not whitelisted', origin);
     callback(null, originIsWhitelisted);
   }
 };

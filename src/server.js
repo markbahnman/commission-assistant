@@ -1,9 +1,8 @@
 import Express from 'express';
-import cookieParser from 'cookie-parser';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import config from './config';
-import favicon from 'serve-favicon';
+// import favicon from 'serve-favicon';
 import compression from 'compression';
 import httpProxy from 'http-proxy';
 import helmet from 'helmet';
@@ -32,8 +31,7 @@ const proxy = httpProxy.createProxyServer({
 
 app.use(helmet());
 app.use(compression());
-app.use(cookieParser());
-app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
 // Proxy to API server
 app.use('/api', (req, res) => {

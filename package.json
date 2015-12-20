@@ -112,7 +112,6 @@
     "clean-webpack-plugin": "^0.1.4",
     "compression": "^1.6.0",
     "connect-redis": "^3.0.1",
-    "cookie-parser": "^1.4.0",
     "cors": "^2.7.1",
     "credential": "^0.2.6",
     "css-loader": "^0.23.0",
