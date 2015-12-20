@@ -24,10 +24,10 @@ import getStatusFromRoutes from './helpers/getStatusFromRoutes';
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
-// removed ws: true from proxy
 const proxy = httpProxy.createProxyServer({
   target: 'http://' + config.apiHost + ':' + config.apiPort
 });
+console.log('host:',process.env.HOST);
 
 app.use(helmet());
 app.use(compression());
