@@ -35,8 +35,6 @@ app.use(compression());
 app.use(cookieParser());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
-app.use(Express.static(path.join(__dirname, '..', 'static')));
-
 // Proxy to API server
 app.use('/api', (req, res) => {
   proxy.web(req, res);
@@ -56,6 +54,7 @@ proxy.on('error', (error, req, res) => {
   res.end(JSON.stringify(json));
 });
 
+app.use(Express.static(path.join(__dirname, '..', 'static')));
 app.use((req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
