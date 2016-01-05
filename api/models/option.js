@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         Option
-        .belongsTo(models.Opening, {
+        .belongsTo(models.User, {
           onDelete: 'CASCADE',
           foreignKey: {
             allowNull: false

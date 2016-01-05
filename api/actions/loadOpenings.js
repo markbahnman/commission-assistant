@@ -8,11 +8,6 @@ export default function loadOpenings(req) {
       models.Opening
         .findAll({where: { author: req.session.user }})
         .then((openings) => {
-          // console.log('Found openings in database', openings);
-          // let ret_openings = [];
-          // openings.map((opening) => {
-          //   ret_openings.push({title: opening.title});
-          // });
           resolve({status: 200, openings: openings});
         })
         .catch((err) => {

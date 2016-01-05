@@ -1,5 +1,24 @@
 @import "~susy/sass/susy";
 @import "../../theme/variables.scss";
+form {
+  @include span(6 of 12);
+  margin-left: span(3 of 12);
+  label {
+    @include span(4 of 12);
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: right;
+  }
+  input, textarea {
+    @include span(6 of 12);
+    display: inline-block;
+  }
+  button {
+    @include span(4 of 12);
+    margin-left: span(4 of 12) + gutter(12);
+  }
+}
 .openings {
   color: #c9c9c9;
   .heading {

@@ -36,9 +36,8 @@
   }
   .description {
     @include span(3 of 4 last);
-    text-align: center;
     p {
-      padding: 5px;
+      padding: 10px;
     }
   }
   button {

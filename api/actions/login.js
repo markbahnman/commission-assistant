@@ -11,7 +11,7 @@ export default function login(req) {
     } else {
       // TODO sanitize username
       models.User
-        .findOne({where: { username: req.body.username }})
+        .findOne({where: { username: req.body.username }, raw: true})
         .then((user) => {
           if (user && user.hash) {
             pw.verify(user.hash, req.body.password, (err, isValid) => {
@@ -30,10 +30,7 @@ export default function login(req) {
           } else {
             reject({status: 401, success: false, error: 'Invalid User'});
           }
-        })
-        .catch((err) => {
-          reject({status: 500, success: false, error: err});
-      });
+        }).catch((err) => reject({status: 500, success: false, error: err}));
     }
   });
 }

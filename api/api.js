@@ -48,8 +48,14 @@ app.post('/signup', respond(actions.signup));
 app.get('/loadAuth', respond(actions.loadAuth));
 app.post('/openings', respond(actions.createOpening));
 app.get('/openings', respond(actions.loadOpenings));
-app.post('/options', respond(actions.createOption));
+app.post('/option', respond(actions.createOption));
 app.get('/logout', respond(actions.logout));
+app.post('/type', respond(actions.createType));
+app.post('/inputType', respond(actions.createInputType));
+app.post('/formTemplate', respond(actions.createTemplate));
+app.post('/createForm', respond(actions.createForm));
+app.post('/createType', respond(actions.createType));
+app.post('/quote', respond(actions.createQuote));
 
 // 404 handler
 app.use((req, res) => {

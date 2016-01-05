@@ -14,4 +14,19 @@ export loadOpenings from './loadOpenings';
 
 // Commission Opening Options
 export createOption from './createOption';
+
+export createType from './createType';
+
+// export createQuote from './createQuote';
+
+export createInputType from './createInputType';
+
+export createTemplate from './createTemplate';
+
+export createForm from './createForm';
+
+export createType from './createType';
+
+export createQuote from './createQuote';
+
 // export * as widget from './widget/index';

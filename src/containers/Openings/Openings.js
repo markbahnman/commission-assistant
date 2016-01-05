@@ -25,9 +25,11 @@ export default class CreateOpening extends Component {
     event.preventDefault();
     const title = this.refs.title;
     const price = this.refs.price;
-    this.props.createOpening(title.value, price.value);
+    const description = this.refs.description;
+    this.props.createOpening(title.value, price.value, description.value);
     title.value = '';
     price.value = '';
+    description.value = '';
   }
 
   render() {
@@ -39,9 +41,13 @@ export default class CreateOpening extends Component {
         <LoginError />
         <div className={styles.heading}>
           <h1>Create New Opening</h1>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" ref="title" placeholder="title"/>
+          <form className="createOpening" onSubmit={this.handleSubmit}>
+            <label htmlFor="title">Title</label>
+            <input type="text" ref="title" id="title" placeholder="title"/>
+            <label htmlFor="price">Price</label>
             <input type="currency" ref="price" placeholder="price"/>
+            <label htmlFor="description">Description</label>
+            <textarea ref="description" id="description"/>
             <button onClick={this.handleSubmit}>Create</button>
           </form>
         </div>

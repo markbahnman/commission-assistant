@@ -59,13 +59,14 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export function createOpening(title, price) {
+export function createOpening(title, price, description) {
   return {
     types: [CREATE_OPENING, CREATE_OPENING_SUCCESS, CREATE_OPENING_FAIL],
     promise: (client) => client.post('/openings', {
       data: {
         title: title,
-        price: price
+        price: price,
+        description
       }
     })
   };
