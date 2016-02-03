@@ -37,8 +37,9 @@ export default function signup(req) {
 
       models.User
         .create(user)
-        .then(() => {
+        .then((userData) => {
           req.session.user = user.username;
+          req.session.userid = userData.id;
           resolve({status: 201, success: true, user: user.username});
         })
         .catch((error) => {

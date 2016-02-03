@@ -1,16 +1,16 @@
 const PREAUTH = 'commission-assistant/auth/PREAUTH';
-const LOAD = 'redux-example/auth/LOAD';
-const LOAD_SUCCESS = 'redux-example/auth/LOAD_SUCCESS';
-const LOAD_FAIL = 'redux-example/auth/LOAD_FAIL';
+const LOAD = 'commission-assistant/auth/LOAD';
+const LOAD_SUCCESS = 'commission-assistant/auth/LOAD_SUCCESS';
+const LOAD_FAIL = 'commission-assistant/auth/LOAD_FAIL';
 const SIGNUP = 'commission-assistant/auth/SIGNUP';
-const SIGNUP_SUCCESS = 'redux-example/auth/SIGNUP_SUCCESS';
-const SIGNUP_FAIL = 'redux-example/auth/SIGNUP_FAIL';
+const SIGNUP_SUCCESS = 'commission-assistant/auth/SIGNUP_SUCCESS';
+const SIGNUP_FAIL = 'commission-assistant/auth/SIGNUP_FAIL';
 const LOGIN = 'commission-assistant/auth/LOGIN';
-const LOGIN_SUCCESS = 'redux-example/auth/LOGIN_SUCCESS';
-const LOGIN_FAIL = 'redux-example/auth/LOGIN_FAIL';
-const LOGOUT = 'redux-example/auth/LOGOUT';
-const LOGOUT_SUCCESS = 'redux-example/auth/LOGOUT_SUCCESS';
-const LOGOUT_FAIL = 'redux-example/auth/LOGOUT_FAIL';
+const LOGIN_SUCCESS = 'commission-assistant/auth/LOGIN_SUCCESS';
+const LOGIN_FAIL = 'commission-assistant/auth/LOGIN_FAIL';
+const LOGOUT = 'commission-assistant/auth/LOGOUT';
+const LOGOUT_SUCCESS = 'commission-assistant/auth/LOGOUT_SUCCESS';
+const LOGOUT_FAIL = 'commission-assistant/auth/LOGOUT_FAIL';
 
 const initialState = {
   loaded: false

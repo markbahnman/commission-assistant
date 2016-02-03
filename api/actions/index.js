@@ -16,6 +16,7 @@ export loadOpenings from './loadOpenings';
 export createOption from './createOption';
 
 export createType from './createType';
+export loadTypes from './loadTypes';
 
 // export createQuote from './createQuote';
 

@@ -4,27 +4,33 @@
 import 'babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createHistory from 'history/lib/createBrowserHistory';
-import useScroll from 'scroll-behavior/lib/useStandardScroll';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import {Provider} from 'react-redux';
-import {reduxReactRouter, ReduxRouter} from 'redux-router';
+import { Router, browserHistory } from 'react-router';
+import { ReactAsyncConnect } from 'redux-async-connect';
 
 import getRoutes from './routes';
-import makeRouteHooksSafe from './helpers/makeRouteHooksSafe';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+//Needed for onTouchTap
+//Can go away when react 1.0 release
+//Check this repo:
+//https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
 
 const client = new ApiClient();
 
-// Three different types of scroll behavior available.
-// Documented here: https://github.com/rackt/scroll-behavior
-const scrollablehistory = useScroll(createHistory);
-
 const dest = document.getElementById('content');
-const store = createStore(reduxReactRouter, makeRouteHooksSafe(getRoutes), scrollablehistory, client, window.__data);
+const store = createStore(getRoutes, browserHistory, client, window.__data);
 
 const component = (
-  <ReduxRouter routes={getRoutes(store)} />
+  <Router render={(props) =>
+        <ReduxAsyncConnect {...props} helpers={{client}} />
+      } history={browserHistory}>
+    {getRoutes(store)}
+  </Router>
 );
 
 ReactDOM.render(

@@ -52,6 +52,7 @@ class _ApiClient {
         request.end((err, { body } = {}) => {
           // console.log('End of api request', body, err);
           if (err) {
+            // console.log(err);
             reject(body || err);
           } else {
             resolve(body);

@@ -6,7 +6,7 @@ export default function loadOpenings(req) {
       reject({status: 403, error: 'You need to be logged in to get all openings'});
     } else {
       models.Opening
-        .findAll({where: { author: req.session.user }})
+        .findAll({where: { UserId: req.session.userid }, raw: true})
         .then((openings) => {
           resolve({status: 200, openings: openings});
         })

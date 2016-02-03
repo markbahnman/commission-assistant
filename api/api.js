@@ -50,7 +50,10 @@ app.post('/openings', respond(actions.createOpening));
 app.get('/openings', respond(actions.loadOpenings));
 app.post('/option', respond(actions.createOption));
 app.get('/logout', respond(actions.logout));
+
+app.get('/type', respond(actions.loadTypes));
 app.post('/type', respond(actions.createType));
+
 app.post('/inputType', respond(actions.createInputType));
 app.post('/formTemplate', respond(actions.createTemplate));
 app.post('/createForm', respond(actions.createForm));

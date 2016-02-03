@@ -4,6 +4,7 @@ import * as openingActions from 'redux/modules/opening';
 import {areOpeningsLoaded, loadOpenings} from 'redux/modules/opening';
 import connectData from 'helpers/connectData';
 import {LoginError, OpeningCard} from 'components';
+import Helmet from 'react-helmet';
 
 function fetchData(getState, dispatch) {
   const promises = [];
@@ -38,6 +39,7 @@ export default class CreateOpening extends Component {
 
     return (
       <div className={styles.openings}>
+      <Helmet title="Openings" />
         <LoginError />
         <div className={styles.heading}>
           <h1>Create New Opening</h1>

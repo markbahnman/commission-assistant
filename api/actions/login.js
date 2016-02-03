@@ -21,6 +21,7 @@ export default function login(req) {
                 };
 
                 req.session.user = user.username;
+                req.session.userid = user.id;
                 resolve({status: 200, success: true, user: user.username});
 
               } else {

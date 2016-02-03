@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import Helmet from 'react-helmet';
 
 @connect(state => ({auth: state.auth}))
 export default class Home extends Component {
@@ -17,6 +18,7 @@ export default class Home extends Component {
     // const logoImage = require('./logo.png');
     return (
       <div className={styles.home}>
+      <Helmet title='Home'/>
         {!user &&
           <div className={styles.content}>
             <h1>Welcome to Commission Assistant</h1>

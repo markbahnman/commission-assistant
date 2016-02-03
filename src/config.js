@@ -16,30 +16,28 @@ module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: process.env.PORT,
   apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT || process.env.PORT,
+  apiPort: process.env.APIPORT || process.env.PORT || 8081,
   redisHost: process.env.REDISHOST || 'localhost',
   redisPort: process.env.REDISPORT || 6379,
   cookieAge: (365 * 24 * 60 * 60),
   app: {
     title: 'Commission Assistant',
     description: 'Modern Tool for Modern Artists',
-    meta: {
-      charSet: 'utf-8',
-      property: {
-        'og:site_name': 'Commission Assistant',
-        'og:image': 'https://react-redux.herokuapp.com/logo.jpg',
-        'og:locale': 'en_US',
-        'og:title': 'Commission Assistant',
-        'og:description': 'Modern Tool for Modern Artists',
-        'twitter:card': 'summary',
-        'twitter:site': '@why_not_cats',
-        'twitter:creator': '@markbahnman',
-        'twitter:title': 'Commission Assistant',
-        'twitter:description': 'Modern Tool for Modern Artists',
-        'twitter:image': 'https://react-redux.herokuapp.com/logo.jpg',
-        'twitter:image:width': '200',
-        'twitter:image:height': '200'
-      }
+    head: {
+      titleTemplate: 'Commission Assistant: %s',
+      meta: [
+        {charset: 'utf-8'},
+        {property: 'og:site_name', content: 'Commission Assistant'},
+        {property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg'},
+        {property: 'og:locale', content: 'en_US'},
+        {property: 'og:title', content: 'Commission Assistant'},
+        {property: 'og:description', content: 'Modern Tool for Modern Artists'},
+        {property: 'og:card', content: 'summary'},
+        {property: 'og:site', content: '@why_not_cats'},
+        {property: 'og:creator', content: '@markbahnman'},
+        {property: 'og:image:width', content: '200'},
+        {property: 'og:image:height', content: '200'}
+      ]
     }
   }
 }, environment);
