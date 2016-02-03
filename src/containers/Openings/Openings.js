@@ -2,24 +2,25 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as openingActions from 'redux/modules/opening';
 import {areOpeningsLoaded, loadOpenings} from 'redux/modules/opening';
-import connectData from 'helpers/connectData';
 import {LoginError, OpeningCard} from 'components';
 import Helmet from 'react-helmet';
 
-function fetchData(getState, dispatch) {
-  const promises = [];
-  if (!areOpeningsLoaded(getState())) {
-    promises.push(dispatch(loadOpenings()));
-  }
-  return Promise.all(promises);
-}
-@connectData(fetchData)
 @connect(state => ({openings: state.opening.openings}),
         openingActions)
 export default class CreateOpening extends Component {
   static propTypes = {
     openings: PropTypes.array,
     createOpening: PropTypes.func
+  }
+
+  static reduxAsyncConnect(params, store) {
+    const {dispatch, getState} = store;
+
+    const promises = [];
+    if (!areOpeningsLoaded(getState())) {
+      promises.push(dispatch(loadOpenings()));
+    }
+    return Promise.all(promises);
   }
 
   handleSubmit = (event) => {

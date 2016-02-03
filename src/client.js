@@ -8,16 +8,16 @@ import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { ReactAsyncConnect } from 'redux-async-connect';
+import { ReduxAsyncConnect } from 'redux-async-connect';
 
 import getRoutes from './routes';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-//Needed for onTouchTap
-//Can go away when react 1.0 release
-//Check this repo:
-//https://github.com/zilverline/react-tap-event-plugin
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
 const client = new ApiClient();
