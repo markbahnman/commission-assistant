@@ -1,50 +1,49 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import cookie from 'react-cookie';
-// import { IndexLink } from 'react-router';
 import Helmet from 'react-helmet';
-import { isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth';
-import { routeActions } from 'react-router-redux';
+import { isLoaded as isAuthLoaded, load as loadAuth, logout} from 'redux/modules/auth';
+import { pushState } from 'redux-router';
+import connectData from 'helpers/connectData';
 import {Brand, NavLogin} from 'components';
+
 import config from '../../config';
 
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import themeDecorator from 'material-ui/lib/styles/theme-decorator';
+
+const muiTheme = getMuiTheme({}, { userAgent: 'all' });
+
+const { object, func } = PropTypes;
+
+function fetchData(getState, dispatch) {
+  const promises = [];
+  const state = getState();
+
+  if (!isAuthLoaded(state)) {
+    promises.push(dispatch(loadAuth()));
+  }
+  return Promise.all(promises);
+}
+
+@connectData(fetchData)
 @connect(
   state => ({auth: state.auth}),
-  {pushState: routeActions.push})
-export default class App extends Component {
+  {logout, pushState})
+class App extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
-    auth: PropTypes.object,
-    pushState: PropTypes.func.isRequired
+    children: object.isRequired,
+    auth: object,
+    logout: func.isRequired,
+    pushState: func.isRequired
   };
 
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
 
-  // componentWillReceiveProps(nextProps) {
-    // if (!this.props.user && nextProps.user) {
-    //   // login
-    //   this.props.pushState('/loginSuccess');
-    // } else if (this.props.user && !nextProps.user) {
-    //   // logout
-    //   this.props.pushState('/');
-    // }
-  // }
-
-  static reduxAsyncConnect(params, store) {
-    const {dispatch, getState} = store;
-    const promises = [];
-
-    if (!isAuthLoaded(getState())) {
-      promises.push(dispatch(loadAuth()));
-    }
-    return Promise.all(promises);
-  }
-
   render() {
     const styles = require('./App.scss');
-    // const logoImage = require('./logo.svg');
+    // console.log(this.props);
     return (
       <div className={styles.app}>
         <Helmet {...config.app.head}/>
@@ -63,3 +62,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default themeDecorator(muiTheme)(App);

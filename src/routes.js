@@ -9,13 +9,13 @@ import {
   } from 'containers';
 
 export default (store) => {
-  const requireLogin = (nextState, replaceState, cb) => {
+  const requireLogin = (nextState, replace, cb) => {
     function checkAuth() {
       const { auth: { user }} = store.getState();
       if (!user) {
         // oops, not logged in, so can't be here!
         console.log('Not logged in');
-        replaceState(null, '/');
+        replace('/');
       }
       cb();
     }
