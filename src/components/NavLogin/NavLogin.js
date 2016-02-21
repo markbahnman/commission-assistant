@@ -1,34 +1,57 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {Login, Signup} from 'components';
-import {logout} from 'redux/modules/auth';
+
+import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
+import RaisedButton from 'material-ui/lib/raised-button';
+
+import { LoginButton, SignupButton } from 'components';
+
+import { login, logout } from 'redux/modules/auth';
 
 @connect(state => ({ auth: state.auth }),
-         {logout})
+         {login, logout})
 export default class NavLogin extends Component {
   static propTypes = {
     auth: PropTypes.object,
+    login: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired
   }
 
   state = {
-    login: false,
-    signup: false
+    open: false,
+    error: {}
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if ((!prevState.login && this.state.login) || (!prevState.signup && this.state.signup)) {
-      if (window && window.IconicJS && document) {
-        window.IconicJS().inject(document.getElementsByClassName('iconic'));
-      }
+  detectError = (username, password) => {
+    let error = false;
+    if (!username || username.trim().length <= 0) {
+      error = true;
+      this.setState({error: { username: 'Username is required' }});
+    } else if (!password || password.length <= 0) {
+      error = true;
+      this.setState({error: { password: 'Password is required' }});
+    } else if (password.length < 4) {
+      error = true;
+      this.setState({error: { password: 'Password must be at least 4 characters' }});
+    }
+
+    return error;
+  }
+
+  handleOpen = () => this.setState({open: true});
+  handleClose = () => this.setState({open: false});
+  handleUserChange = (e) => this.setState({username: e.target.value});
+  handleEmailChange = (e) => this.setState({email: e.target.value});
+  handlePasswordChange = (e) => this.setState({password: e.target.value});
+
+  handleLogin = (e) => {
+    e.preventDefault();
+    const { username, password } = this.state;
+    if (!this.detectError(username, password)) {
+      console.log('No error, logging in with ', username, password);
+      this.props.login(username, password);
     }
   }
-
-  toggleLogin = () => this.setState({login: !this.state.login, signup: false});
-
-  toggleSignup = () => this.setState({signup: !this.state.signup, login: false});
-
-  handleBack = () => this.setState({signup: false, login: false});
 
   handleLogout = (event) => {
     event.preventDefault();
@@ -36,35 +59,21 @@ export default class NavLogin extends Component {
   }
 
   render() {
-    const {auth: {user}} = this.props;
-    const {login, signup} = this.state;
-    const styles = require('./NavLogin.scss');
+    const { auth: { user } } = this.props;
+
     return (
       <div>
-      {user &&
-        <div className={styles.user}>
-        <p className={styles.loggedIn}>{user}</p>
-        <a onClick={this.handleLogout}>logout</a>
-        </div>
-      }
-      {!user && login &&
-        <div>
-          <img onClick={this.handleBack} className={'iconic inject ' + styles.back} data-src="svg/circle-x.svg"/>
-          <Login/>
-        </div>
-      }
-      {!user && signup &&
-        <div>
-          <img onClick={this.handleBack} className={'iconic inject ' + styles.back} data-src="svg/circle-x.svg"/>
-          <Signup/>
-        </div>
-      }
-      {!user && !signup && !login &&
-        <div className="button-group">
-          <button onClick={this.toggleLogin}>Login</button>
-          <button onClick={this.toggleSignup}>Signup</button>
-        </div>
-      }
+        {!user &&
+          <ToolbarGroup float="right" lastchild>
+            <SignupButton />
+            <LoginButton />
+          </ToolbarGroup>
+        }
+        {user &&
+          <ToolbarGroup float="right" lastchild>
+            <RaisedButton label="logout" onTouchTap={this.handleLogout}/>
+          </ToolbarGroup>
+        }
       </div>
       );
   }

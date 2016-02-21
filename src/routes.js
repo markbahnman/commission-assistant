@@ -5,17 +5,18 @@ import {
     App,
     Home,
     Openings,
+    Dashboard,
     NotFound
   } from 'containers';
 
 export default (store) => {
-  const requireLogin = (nextState, replace, cb) => {
+  const requireLogin = (nextState, replaceState, cb) => {
     function checkAuth() {
       const { auth: { user }} = store.getState();
       if (!user) {
         // oops, not logged in, so can't be here!
         console.log('Not logged in');
-        replace('/');
+        replaceState(null, '/');
       }
       cb();
     }
@@ -38,6 +39,7 @@ export default (store) => {
       { /* Routes requiring login */ }
       <Route onEnter={requireLogin}>
         <Route path="openings" component={Openings}/>
+        <Route path="dashboard" component={Dashboard}/>
       </Route>
       { /* Routes */ }
 

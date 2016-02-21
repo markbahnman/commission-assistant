@@ -74,11 +74,11 @@ export function createType(name, description, price) {
   };
 }
 
-export function areTypesLoaded(globalState) {
+export function isLoaded(globalState) {
   return globalState.type && globalState.type.loaded;
 }
 
-export function loadOpenings() {
+export function loadTypes() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('/type')

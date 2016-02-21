@@ -18,6 +18,7 @@ export default function reducer(state = initialState, action) {
         loading: true
       };
     case LOAD_SUCCESS:
+      console.log('Successful load of openings', action.result);
       return {
         ...state,
         loading: false,
@@ -72,7 +73,7 @@ export function createOpening(title, price, description) {
   };
 }
 
-export function areOpeningsLoaded(globalState) {
+export function isLoaded(globalState) {
   return globalState.opening && globalState.opening.loaded;
 }
 

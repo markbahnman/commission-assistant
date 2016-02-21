@@ -21,21 +21,20 @@ export default function signup(req) {
         console.error('password validation signup error', req.body);
       }
       reject({status: 400, success: false, error: 'Validation Error: Invalid Password'});
-    }
+    } else {
+      // Salt and hash password
+      pw.hash(req.body.password, (err, hash) => {
+        if (err) {
+          reject({status: 500, success: false, error: 'User creation error: password'});
+        }
 
-    // Salt and hash password
-    pw.hash(req.body.password, (err, hash) => {
-      if (err) {
-        reject({status: 500, success: false, error: 'User creation error: password'});
-      }
+        const user = {
+          username: req.body.username,
+          hash: hash,
+          email: req.body.email
+        };
 
-      const user = {
-        username: req.body.username,
-        hash: hash,
-        email: req.body.email
-      };
-
-      models.User
+        models.User
         .create(user)
         .then((userData) => {
           req.session.user = user.username;
@@ -46,6 +45,7 @@ export default function signup(req) {
           console.error('Error creating new user', error);
           reject({status: 500, success: false, error: error});
         });
-    });
+      });
+    }
   });
 }

@@ -1,37 +1,33 @@
-@import "~susy/sass/susy";
-@import "../../theme/variables.scss";
-
-.home {
-  color: $grey;
+.title {
   text-align: center;
-  .content {
-    padding-top: 10px;
-    .features {
-      @include susy-clearfix;
-      color: white;
-      padding: gutter(12);
-      padding-bottom: 0;
-      .feature {
-        @include susy-breakpoint(480px, 12) {
-          @include span(12);
-        }
-        @include susy-breakpoint(720px, 12) {
-          @include gallery(6);
-        }
-        @include susy-breakpoint(1120px, 12) {
-          @include gallery(4);
-        }
-        background-color: $secondary;
-        min-height: 10em;
-        margin-bottom: gutter(12);
-        list-style-type: none;
-        p {
-          margin: 10px;
-        }
-        .icon {
-          fill: $grey;
-        }
-      }
-    }
-  }
 }
+//     padding-top: 10px;
+//     .features {
+//       @include susy-clearfix;
+//       color: white;
+//       padding: gutter(12);
+//       padding-bottom: 0;
+//       .feature {
+//         @include susy-breakpoint(480px, 12) {
+//           @include span(12);
+//         }
+//         @include susy-breakpoint(720px, 12) {
+//           @include gallery(6);
+//         }
+//         @include susy-breakpoint(1120px, 12) {
+//           @include gallery(4);
+//         }
+//         background-color: $secondary;
+//         min-height: 10em;
+//         margin-bottom: gutter(12);
+//         list-style-type: none;
+//         p {
+//           margin: 10px;
+//         }
+//         .icon {
+//           fill: $grey;
+//         }
+//       }
+//     }
+//   }
+// }

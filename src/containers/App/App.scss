@@ -1,40 +1,46 @@
-@import "~susy/sass/susy";
-@import "../../theme/variables.scss";
-$suzy: (
-global-box-sizing: border-box,
-columns: 12,
-container: 1120px
-);
-
-.app {
-  @include container(1120px);
-  .pullLeft {
-    float: left;
-    background-image: url(logo.svg);
-    background-repeat: no-repeat;
-    height: 48px;
-  }
-  .login {
-    width: auto;
-    vertical-align: middle;
-    margin: 4px 0 0 0;
-    display: inline-block;
-    padding: 10px 15px;
-  }
-  .pullRight {
-    float: right;
-  }
-  nav {
-    top: 0;
-    right: 0;
-    left: 0;
-    position: fixed;
-    display: table;
-    width: 100%;
-    background-color: $grey;
-  }
-  .appContent {
-    min-height: 380px;
-    margin-top: 50px;
-  }
+body{
+  margin: 0
 }
+// @import "~susy/sass/susy";
+// @import "../../theme/variables.scss";
+// $suzy: (
+// global-box-sizing: border-box,
+// columns: 12,
+// container: 1120px
+// );
+//
+// body {
+//   margin: 0
+// }
+// .app {
+//   @include container(1120px);
+//   .pullLeft {
+//     float: left;
+//     background-image: url(logo.svg);
+//     background-repeat: no-repeat;
+//     height: 48px;
+//   }
+//   .login {
+//     width: auto;
+//     vertical-align: middle;
+//     margin: 4px 0 0 0;
+//     display: inline-block;
+//     padding: 10px 15px;
+//   }
+//   .pullRight {
+//     float: right;
+//   }
+//   nav {
+//     top: 0;
+//     right: 0;
+//     left: 0;
+//     position: fixed;
+//     display: table;
+//     width: 100%;
+//     background-color: $grey;
+//   }
+//   .appContent {
+//     min-height: 380px;
+//     margin-top: 50px;
+//   }
+// }

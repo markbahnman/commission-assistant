@@ -114,7 +114,7 @@ export function load() {
   };
 }
 
-export function signup(name, password, email) {
+export function signup(name, email, password) {
   return {
     types: [SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAIL],
     promise: (client) => client.post('/signup', {
