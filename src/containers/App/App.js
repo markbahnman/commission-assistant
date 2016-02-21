@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout} from 'redux/modules/auth';
 import { isLoaded as isThemeLoaded, loadTheme } from 'redux/modules/theme';
-import { pushState } from 'redux-router';
-import connectData from 'helpers/connectData';
+import { routeActions } from 'react-router-redux';
 
 import {NavLogin} from 'components';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
@@ -12,6 +11,7 @@ import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 
 import config from '../../config';
+import { asyncConnect } from 'redux-async-connect';
 
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import themeDecorator from 'material-ui/lib/styles/theme-decorator';
@@ -20,23 +20,23 @@ const muiTheme = getMuiTheme({}, { userAgent: 'all' });
 
 const { object, func } = PropTypes;
 
-function fetchData(getState, dispatch) {
-  const promises = [];
-  const state = getState();
+@asyncConnect([{
+  promise: ({store: {getState, dispatch}}) => {
+    const promises = [];
+    const state = getState();
 
-  if (!isAuthLoaded(state)) {
-    promises.push(dispatch(loadAuth()));
+    if (!isAuthLoaded(state)) {
+      promises.push(dispatch(loadAuth()));
+    }
+    if (!isThemeLoaded(state)) {
+      promises.push(dispatch(loadTheme(muiTheme)));
+    }
+    return Promise.all(promises);
   }
-  if (!isThemeLoaded(state)) {
-    promises.push(dispatch(loadTheme(muiTheme)));
-  }
-  return Promise.all(promises);
-}
-
-@connectData(fetchData)
+}])
 @connect(
   state => ({auth: state.auth}),
-  {logout, pushState})
+  {logout, pushState: routeActions.push})
 @themeDecorator(muiTheme)
 export default class App extends Component {
   static propTypes = {
@@ -53,13 +53,13 @@ export default class App extends Component {
   componentWillReceiveProps(nextProps) {
     // if (!this.props.auth && nextProps.user) {
       // login
-      // this.props.pushState(null, '/loginSuccess');
+      // this.props.pushState('/loginSuccess');
     // } else if (this.props.user && !nextProps.user) {
 
     if (this.props.auth.user && !nextProps.auth.user) {
       // logout
       console.log('Not logged in at will receive props');
-      this.props.pushState(null, '/');
+      this.props.pushState('/');
     }
   }
 

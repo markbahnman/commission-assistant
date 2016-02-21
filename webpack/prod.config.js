@@ -1,4 +1,4 @@
-require('babel/polyfill');
+require('babel-polyfill');
 
 // Webpack config for creating the production bundle.
 var path = require('path');
@@ -33,6 +33,7 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel']},
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
+      { test: /\.css/, loader: 'style!css' },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
@@ -56,6 +57,9 @@ module.exports = {
     // css files from the extract-text-plugin loader
     new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
     new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      },
       __CLIENT__: true,
       __SERVER__: false,
       __DEVTOOLS__: false,
@@ -64,14 +68,6 @@ module.exports = {
 
     // ignore dev config
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
-
-    // set global vars
-    new webpack.DefinePlugin({
-      'process.env': {
-        // Useful to reduce the size of client-side libraries, e.g. react
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
 
     // optimizations
     new webpack.optimize.DedupePlugin(),

@@ -15,14 +15,12 @@ import Html from './helpers/Html';
 import PrettyError from 'pretty-error';
 import http from 'http';
 
-import {ReduxRouter} from 'redux-router';
+import { match } from 'react-router';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
 
 import createHistory from 'history/lib/createMemoryHistory';
-import {reduxReactRouter, match} from 'redux-router/server';
 import {Provider} from 'react-redux';
-import qs from 'query-string';
 import getRoutes from './routes';
-import getStatusFromRoutes from './helpers/getStatusFromRoutes';
 
 import { loadUserAgent } from './redux/modules/req';
 
@@ -79,8 +77,9 @@ app.use((req, res) => {
   }
 
   const client = new ApiClient(req);
+  const history = createHistory();
 
-  const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
+  const store = createStore(getRoutes, history, client);
 
   function hydrateOnClient() {
 
@@ -92,43 +91,35 @@ app.use((req, res) => {
     hydrateOnClient();
     return;
   }
-  store.dispatch(match(req.originalUrl, (error, redirectLocation, routerState) => {
+  match({ history, routes: getRoutes(store), location: req.originalUrl }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search);
     } else if (error) {
       console.error('ROUTER ERROR:', pretty.render(error));
       res.status(500);
       hydrateOnClient();
-    } else if (!routerState) {
-      res.status(500);
-      hydrateOnClient();
-    } else {
-      if (routerState.location.search && !routerState.location.query) {
-        routerState.location.query = qs.parse(routerState.location.search);
-      }
+    } else if (renderProps) {
 
       store.dispatch(loadUserAgent(req));
-      store.getState().router.then(() => {
+
+      loadOnServer({...renderProps, store, helpers: {client}}).then(() => {
         const component = (
           <Provider store={store} key="provider">
-            <ReduxRouter/>
+            <ReduxAsyncConnect {...renderProps} />
           </Provider>
         );
 
-        const status = getStatusFromRoutes(routerState.routes);
-        if (status) {
-          res.status(status);
-        }
+        res.status(200);
+
+        global.navigator = {userAgent: req.headers['user-agent']};
 
         res.send('<!doctype html>\n' +
           renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>));
-      }).catch((err) => {
-        console.error('DATA FETCHING ERROR:', pretty.render(err));
-        res.status(500);
-        hydrateOnClient();
       });
+    } else {
+      res.status(404).send('Not found');
     }
-  }));
+  });
 });
 
 if (config.port) {
