@@ -8,6 +8,7 @@ import opening from './opening';
 import req from './req';
 import theme from './theme';
 import type from './type';
+import modal from './modal';
 // import counter from './counter';
 
 export default combineReducers({
@@ -17,7 +18,8 @@ export default combineReducers({
   opening,
   req,
   type,
-  theme
+  theme,
+  modal
   // multireducer: multireducer({
   //   counter1: counter,
   //   counter2: counter,

@@ -21,13 +21,13 @@ describe('Type', () => {
       ], (err, results) => done(err));
   });
 
-  describe('Creating', () => {
-    afterEach(() => {
-      return Bluebird.all([
-        models.Type.sync({ force: true })
-      ]);
-    });
+  afterEach(() => {
+    return Bluebird.all([
+      models.Type.sync({ force: true })
+    ]);
+  });
 
+  describe('Creating', () => {
     it('should not allow a user to create a type with no description', (done) => {
       const type = {
         name: 'Test Type',
@@ -81,6 +81,45 @@ describe('Type', () => {
           expect(typeResult.UserId).to.exist;
           done();
         });
+    });
+  });
+
+  describe('Updating', () => {
+    it('should update with valid data', (done) => {
+      let typeid;
+
+      series([
+        (cb) => {
+          const type = {
+            name: 'Test Type',
+            description: 'Test Description',
+            price: '25'
+          };
+
+          agent
+          .post('/type')
+          .send(type)
+          .end((err, res) => {
+            expect(res).to.have.property('status');
+            expect(res.status).to.eq(201);
+            expect(res.body.type.id).to.exist;
+            typeid = res.body.type.id;
+            cb(err);
+          });
+        },
+        (cb) => {
+          const updatedType = { price: '30' };
+
+          agent.put(`/type/${typeid}`)
+          .send(updatedType)
+          .end((err, res) => {
+            expect(res.status).to.eq(200);
+            expect(res.body).to.have.deep.property('result.base_price');
+            const result = res.body.result;
+            expect(result['base_price']).to.eq('30');
+            cb(err, res);
+          });
+        }], (err, results) => done(err));
     });
   });
 

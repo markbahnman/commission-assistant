@@ -9,7 +9,7 @@ import config from '../src/config';
 import * as actions from './actions/index';
 import {mapUrl} from './utils/url.js';
 import respond from './utils/respondFromPromise.js';
-import auth from './utils/authenticateMiddleware.js';
+import {loggedIn} from './utils/authenticateMiddleware.js';
 import PrettyError from 'pretty-error';
 
 const pretty = new PrettyError();
@@ -42,23 +42,31 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(compression());
 
-app.post('/login', respond(actions.login));
 app.get('/health', respond(actions.health));
+
 app.post('/signup', respond(actions.signup));
-app.get('/loadAuth', respond(actions.loadAuth));
-app.post('/openings', respond(actions.createOpening));
-app.get('/openings', respond(actions.loadOpenings));
-app.post('/option', respond(actions.createOption));
+app.post('/login', respond(actions.login));
 app.get('/logout', respond(actions.logout));
+app.get('/loadAuth', respond(actions.loadAuth));
 
-app.get('/type', respond(actions.loadTypes));
-app.post('/type', respond(actions.createType));
+app.post('/openings', loggedIn(), respond(actions.createOpening));
+app.get('/openings', loggedIn(), respond(actions.loadOpenings));
 
-app.post('/inputType', respond(actions.createInputType));
-app.post('/formTemplate', respond(actions.createTemplate));
-app.post('/createForm', respond(actions.createForm));
-app.post('/createType', respond(actions.createType));
-app.post('/quote', respond(actions.createQuote));
+app.post('/option', loggedIn(), respond(actions.createOption));
+app.put('/option/:id', loggedIn(), respond(actions.updateOption));
+
+
+app.get('/type', loggedIn(), respond(actions.loadTypes));
+app.post('/type', loggedIn(), respond(actions.createType));
+app.put('/type/:id', loggedIn(), respond(actions.updateType));
+
+app.post('/inputType', loggedIn(), respond(actions.createInputType));
+app.put('/inputType', loggedIn(), respond(actions.updateInputType));
+
+app.post('/formTemplate', loggedIn(), respond(actions.createTemplate));
+app.post('/createForm', loggedIn(), respond(actions.createForm));
+
+app.post('/quote', loggedIn(), respond(actions.createQuote));
 
 // 404 handler
 app.use((req, res) => {

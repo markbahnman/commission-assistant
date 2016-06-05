@@ -3,9 +3,7 @@ import valid from 'validator';
 
 export default function createForm(req) {
   return new Promise((resolve, reject) => {
-    if (!req.session || (req.session && !req.session.user)) {
-      reject({status: 403, error: 'You need to be logged in to create a form'});
-    } else if (!req.body.templateid || !req.body.inputs) {
+    if (!req.body.templateid || !req.body.inputs) {
       reject({status: 400, error: 'Missing templateid or inputs'});
     } else {
       // Find form object, include User model, check user model against user sessions, then add the inputtypes to template
@@ -25,7 +23,7 @@ export default function createForm(req) {
           .findAll({where: { id: { $in: req.body.inputs }}})
           .then((result) => {
             template.addFormInputTypes(req.body.inputs).then((res) => {
-              reject({status: 201, success: true, result: res});
+              resolve({status: 201, success: true, result: res});
             }).catch((err) => reject({status: 500, success: false, error: err}));
           }).catch((err) => reject({status: 500, success: false, error: err}));
         }).catch((err) => reject({status: 500, success: false, error: err}));

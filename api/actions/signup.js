@@ -3,8 +3,11 @@ import valid from 'validator';
 import pw from 'credential';
 
 export default function signup(req) {
-  return new Promise((resolve, reject) => {
+  if (process.env.NODE_ENV === 'testing') {
+    pw.workUnits = 1;
+  }
 
+  return new Promise((resolve, reject) => {
     // Validate data
     if (!req.body.email || !valid.isEmail(req.body.email)) {
       if (process.env.NODE_ENV !== 'testing') {
@@ -40,8 +43,7 @@ export default function signup(req) {
           req.session.user = user.username;
           req.session.userid = userData.id;
           resolve({status: 201, success: true, user: user.username});
-        })
-        .catch((error) => {
+        }, (error) => {
           console.error('Error creating new user', error);
           reject({status: 500, success: false, error: error});
         });

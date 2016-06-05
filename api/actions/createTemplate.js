@@ -3,9 +3,7 @@ import valid from 'validator';
 
 export default function createTemplate(req) {
   return new Promise((resolve, reject) => {
-    if (!req.session || (req.session && !req.session.user)) {
-      reject({status: 403, error: 'You need to be logged in to create a template'});
-    } else if (!req.body.title) {
+    if (!req.body.title) {
       reject({status: 400, error: 'Missing template title'});
     } else {
       models.User

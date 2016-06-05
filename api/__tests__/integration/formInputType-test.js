@@ -1,3 +1,4 @@
+import {series} from 'async';
 import {expect} from 'chai';
 import app from '../../api';
 import Bluebird from 'bluebird';
@@ -7,22 +8,20 @@ import models from '../../models';
 var agent = request.agent(app);
 describe('FormInputType', () => {
   before((done) => {
-    models.sequelize.sync({force: true}).then(() => {
-      done();
-    }).catch((error) => {
-      console.log('Error setting up models for tests', error);
-      done(error);
-    });
+    series([
+      (cb) =>
+        models.sequelize.sync({force: true})
+        .then(() => cb())
+        .catch((error) => cb(error)),
+      (cb) =>
+        agent
+        .post('/signup')
+        .send({ username: 'john', password: 'test', email: 'test@example.com' })
+        .expect(201, {status: 201, success: true, user: 'john'}, cb)
+    ], (err, result) => done(err));
   });
 
   describe('Creating', () => {
-
-    before((done) => {
-      agent
-        .post('/signup')
-        .send({ username: 'john', password: 'test', email: 'test@example.com' })
-        .expect(201, {status: 201, success: true, user: 'john'}, done);
-    });
 
     afterEach(() => {
       return Bluebird.all([

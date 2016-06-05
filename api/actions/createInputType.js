@@ -3,10 +3,9 @@ import valid from 'validator';
 
 export default function createInputType(req) {
   const input_types = ['text', 'email', 'textbox'];
+
   return new Promise((resolve, reject) => {
-    if (!req.session || (req.session && !req.session.user)) {
-      reject({status: 403, error: 'You need to be logged in to create an inputType'});
-    } else if (!req.body.label || !req.body.text) {
+    if (!req.body.label || !req.body.text) {
       reject({status: 400, error: 'Missing input type label or text'});
     } else if (!req.body.type || input_types.indexOf(req.body.type) < 0) {
       reject({status: 400,

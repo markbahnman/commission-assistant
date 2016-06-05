@@ -12,3 +12,5 @@ export SignupButton from './SignupButton/SignupButton';
 // Layout
 export Center from './Layout/Center';
 export Row from './Layout/Row';
+
+export Modal from '../containers/Modal';

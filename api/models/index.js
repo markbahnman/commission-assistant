@@ -6,6 +6,7 @@ import config from '../config';
 const env = process.env.NODE_ENV || 'development';
 const cfg = config[env];
 // console.log('Attempting to setup conncetion to database', env);
+// console.log(config);
 const sequelize = new Sequelize(cfg.database, cfg.username, cfg.password, cfg.options);
 // const sequelize = new Sequelize(cfg.connectURL);
 // console.log('Database setup');

@@ -4,10 +4,8 @@ import validateOptions from './validateOptions';
 
 export default function createQuote(req) {
   return new Promise((resolve, reject) => {
-    if (!req.session || (req.session && !req.session.user)) {
       // TODO Make anonymous quote creation acceptable
-      reject({status: 403, error: 'You need to be logged in to create a quote'});
-    } else if (!req.body.openingid) {
+    if (!req.body.openingid) {
       reject({status: 400, error: 'Missing opening id'});
     } else if (!req.body.options) {
       reject({status: 400, error: 'Missing options'});
@@ -40,8 +38,7 @@ export default function createQuote(req) {
             if (!template) {
               reject({status: 404, error: 'Error with finding form template'})
             }
-
-            validateData(template.id, req.body.formdata)
+            validateData(template.get('id'), req.body.formdata)
             .then((result) => {
               validateOptions(req.body.options)
               .then(() => {
@@ -61,13 +58,21 @@ export default function createQuote(req) {
                   resolve({status: 201, quote: result, success: true});
                 }).catch((err) => reject({status: 500, error: err, success: false}));
               }).catch((err) => reject({status: 500, error: err, success: false}));
-            }).catch((err) => reject({status: 500, error: err, success: false}));
-          }).catch((err) => {
-            reject({status: 500, success: false, error: err})
+            }, (err) => {
+              console.log(err, 'Could not validate form data');
+              reject({status: 500, error: err});
+            });
+          }, (err) => {
+            console.log(err, 'Could not find template');
+            reject({status: 500, error: err});
           });
-        }).catch((err) => {
-          reject({status: 500, success: false, error: err})
+        }, (err) => {
+          console.log(err, 'Could not find opening');
+          reject({status: 500, error: err});
         });
+      },(err) => {
+        console.log(err, 'Could not find user');
+        reject({status: 500, error: err, success: false});
       }).catch((err) => reject({status: 500, error: err, success: false}));
     }
   });

@@ -5,7 +5,7 @@ import { isLoaded as isAuthLoaded, load as loadAuth, logout} from 'redux/modules
 import { isLoaded as isThemeLoaded, loadTheme } from 'redux/modules/theme';
 import { routeActions } from 'react-router-redux';
 
-import {NavLogin} from 'components';
+import {NavLogin, Modal} from 'components';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
@@ -73,6 +73,7 @@ export default class App extends Component {
     return (
       <div className={styles.app}>
         <Helmet {...config.app.head}/>
+        <Modal/>
         <Toolbar style={background}>
           <ToolbarGroup firstchild float="left">
             <ToolbarTitle text="Commission Assistant" style={title}/>

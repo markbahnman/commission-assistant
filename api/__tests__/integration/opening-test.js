@@ -59,7 +59,7 @@ describe('Opening', () => {
             }),
         (cb) =>
           agent
-            .post('/createType')
+            .post('/type')
             .send({name: 'Test Type', price: '25', description: 'Test Description'})
             .expect(201)
             .end((err, res) => {

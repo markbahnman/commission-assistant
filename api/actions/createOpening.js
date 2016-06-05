@@ -4,9 +4,7 @@ import validateOptions from './validateOptions';
 
 export default function createOpening(req) {
   return new Promise((resolve, reject) => {
-    if (!req.session || (req.session && !req.session.user)) {
-      reject({status: 403, error: 'You need to be logged in to create an opening'});
-    } else if (!req.body.title) {
+    if (!req.body.title) {
       reject({status: 400, error: 'Missing opening title'});
     } else if (!req.body.templateid) {
       reject({status: 400, error: 'Missing form template id'});
@@ -39,7 +37,7 @@ export default function createOpening(req) {
           .create(opening)
           .then((result) => {
             resolve({status: 201, success: true, opening: result});
-          }).catch((err) => {
+          }, (err) => {
             if (err.name === 'SequelizeForeignKeyConstraintError') {
               const index = err.index;
               const start = index.indexOf('_');

@@ -11,8 +11,7 @@ export default function validate(formid, formdata) {
     .findById(formid)
     .then((form) => {
       if(form) {
-        form
-        .getFormInputTypes()
+        form.getFormInputTypes()
         .then((inputs) => {
           // Check to see if we have all the inputs/data
           if(keys.length > 0 && inputs.length === keys.length) {
